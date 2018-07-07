@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_header_selector"
+    android:id="@+id/view"
+    tools:context="com.example.claudiolinhares.estouseguro.MainActivity">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:id="@+id/menu_contatos">
+
+            <!--Inicio Menu Button -->
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/menu_button"
+                    android:layout_width="80dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/menu_button" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_margin="20dp"
+                    >
+
+                        <TextView
+                            android:id="@+id/menu_button_background1"
+                            android:layout_width="31dp"
+                            android:layout_height="8dp"
+                            android:layout_marginLeft="5dp"
+
+                            android:gravity="center_vertical"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/menu_button_background" />
+
+                        <TextView
+                            android:id="@+id/menu_button_background2"
+                            android:layout_width="31dp"
+                            android:layout_height="8dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_vertical"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/menu_button_background" />
+
+                        <TextView
+                            android:id="@+id/text_menu"
+                            android:layout_width="50dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:gravity="center_vertical"
+                            android:layout_gravity="center_vertical"
+                            android:text="MENU"
+                            android:textColor="#00CDCD"
+                            android:textSize="14dp" />
+
+                </LinearLayout>
+                <!-- Fim Menu Button -->
+
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="15dp"
+                android:gravity="center"
+
+                >
+
+                <!-- Inicio Contatos Button -->
+
+                <Button
+                    android:id="@+id/contatos_button"
+                    android:layout_width="200dp"
+                    android:layout_height="53dp"
+                    android:background="@drawable/menu_button"
+                    android:layout_alignParentRight="true"/>
+
+
+
+                <TextView
+                    android:id="@+id/contatos_background2"
+                    android:layout_width="200dp"
+                    android:layout_height="52dp"
+                    android:background="@drawable/contatos_background2"
+                    android:layout_alignParentRight="true"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    >
+
+                <TextView
+                    android:id="@+id/contatos_background"
+                    android:layout_width="200dp"
+                    android:layout_height="37dp"
+                    android:background="@drawable/contatos_background"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_alignParentRight="true"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center_horizontal"
+                    >
+
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_alignParentRight="true"
+                    >
+
+                    <TextView
+                        android:id="@+id/contatos_text2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textAllCaps="false"
+                        android:text="Contatos Seguros!"
+                        android:textColor="#E0FFFF"
+                        android:textSize="13dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/contatos_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="VER CONTATOS"
+                        android:textColor="#00CACE"
+                        android:textSize="13dp"
+                        />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/contatos"
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/ic_contatos"
+                    android:layout_margin="5dp"
+                    android:layout_alignParentRight="true"/>
+
+                </LinearLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    <!-- Fim Contatos Button -->
+
+
+    <!--Inicio Estou Seguro Box -->
+
+        <RelativeLayout
+            android:id="@+id/estouseguro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/menu_contatos"
+            >
+
+            <ImageView
+                android:id="@+id/estouseguro2_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:alpha=".8" />
+
+            <ImageView
+                android:id="@+id/estouseguro_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="15dp"
+                android:alpha=".8"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:id="@+id/linear_estouseguro"
+                >
+
+                <TextView
+                    android:id="@+id/cadeado"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@drawable/cadeado_verde"/>
+
+                <TextView
+                    android:id="@+id/texto_fonte"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ESTOU SEGURO"
+                    android:textColor="#C7CBCE"
+                    android:textSize="25dp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:divider="@drawable/spacer_medium"
+                    android:showDividers="middle">
+
+                    <TextView
+                        android:id="@+id/dispositivo"
+                        android:layout_width="13dp"
+                        android:layout_height="17dp"
+                        android:background="@drawable/ic_dispositivo"
+                        />
+
+                    <TextView
+                        android:id="@+id/dispositivo2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dispositivo Bluetooth conectado"
+                        android:textColor="#9DFC00"
+                        android:textSize="13dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    <!--Fim Estou Seguro Box -->
+
+
+        <LinearLayout
+            android:id="@+id/linear_okbutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal"
+            android:divider="@drawable/spacer_medium"
+            android:showDividers="middle"
+            android:layout_below="@id/estouseguro">
+
+            <!-- Inicio Ok Buttons -->
+
+
+            <ImageView
+                android:id="@+id/button2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/round_button2"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                >
+
+                <ImageView
+                    android:id="@+id/image_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+                <TextView
+                    android:id="@+id/arraste_esq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="ARRASTE"
+                    android:textColor="#EE9C1E"
+                    android:layout_below="@id/image_view"
+                    android:textSize="13dp" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center|center_vertical">
+
+                <ImageView
+                    android:id="@+id/button"
+                    android:layout_width="108dp"
+                    android:layout_height="108dp"
+                    android:background="@drawable/round_button"/>
+
+
+                <TextView
+                    android:id="@+id/ok"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/button"
+                    android:layout_alignTop="@id/button"
+                    android:layout_alignRight="@id/button"
+                    android:layout_alignBottom="@id/button"
+                    android:text="OK"
+                    android:textColor="#FFFFFF"
+                    android:textSize="35dp"
+                    android:gravity="center"/>
+
+
+                <TextView
+                    android:id="@+id/min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/button"
+                    android:layout_alignTop="@id/button"
+                    android:layout_alignRight="@id/button"
+                    android:layout_alignBottom="@id/button"
+                    android:text="min"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="2dp"/>
+
+
+            </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            >
+                <ImageView
+                    android:id="@+id/image_view_direito"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/arraste_dir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="ARRASTE"
+                    android:textColor="#CDFE02"
+                    android:textSize="13dp" />
+
+        </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/button1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/round_button1" />
+
+
+            <!-- Fim Ok Buttons -->
+        </LinearLayout>
+
+
+
+        <!-- Inicio Log e Relatorio -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/linear_okbutton"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@drawable/line"/>
+
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+                <TextView
+                android:id="@+id/texto_log"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="[27/12 18:30] Bluetooth desconectado\n[27/12 18:30] Alerta ativado via clique no app\n[27/12 18:30] Bluetooth desconectado\n[27/12 18:30] Alerta ativado via clique no app\n[27/12 18:30] Bluetooth desconectado\n[27/12 18:30] Alerta ativado via clique no app\n[27/12 18:20] Alerta desativado\n[27/12 18:19] Alerta será desativado em 1 min\n[27/12 18:15] Alerta será desativado em 5 min"
+                android:textColor="#8EA0AA"
+                android:textSize="15dp" />
+            </android.support.v4.widget.NestedScrollView>
+
+            <Button
+                android:id="@+id/ver_relatorio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/ver_relatorio"
+                android:text="Ver relatório"
+                android:textColor="#06C6CB"
+                android:textSize="20dp" />
+
+            <!-- Fim Log e Relatorio -->
+        </LinearLayout>
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
