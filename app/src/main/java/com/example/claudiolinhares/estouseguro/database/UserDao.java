@@ -18,6 +18,9 @@ public interface UserDao {
     @Query("SELECT * FROM user WHERE cpf LIKE :cpf AND password LIKE :password LIMIT 1")
     User findLogin(String cpf, String password);
 
+    @Query("SELECT * FROM user WHERE cpf LIKE :cpf LIMIT 1")
+    User findAlreadyExist(String cpf);
+
     @Insert
     void insertAll(User... users);
 

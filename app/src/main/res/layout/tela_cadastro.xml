@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/main_header_selector"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:paddingTop="10dp"
+    android:paddingRight="50dp"
+    android:divider="@drawable/empty_tall_divider"
+    android:showDividers="middle"
+    android:paddingLeft="50dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:divider="@drawable/empty_tall_divider"
+        android:showDividers="middle">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:gravity="center|center_horizontal"
+            >
+            <TextView
+                android:id="@+id/ic_anjo"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/ic_anjo_branco" />
+
+            <TextView
+                android:id="@+id/text_anjo"
+                android:layout_width="match_parent"
+                android:layout_marginTop="15dp"
+                android:gravity="center"
+                android:paddingLeft="10dp"
+                android:layout_height="80dp"
+                android:text="ANJO DA GUARDA"
+                android:textColor="#FFFFFF"
+                android:textSize="25dp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/line"/>
+
+        <TextView
+            android:id="@+id/text_cadastro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cadastro"
+            android:textColor="#01C7CA"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/empty_tall_divider"
+            android:showDividers="middle"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_nome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome"
+                android:textColor="#ADCCD1"
+                android:layout_gravity="left"
+                android:textSize="14dp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/nomeinputlayout">
+
+                <EditText
+                    android:id="@+id/nomeinput"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/login_input"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:gravity="center" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/text_sobrenome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sobrenome"
+                android:textColor="#ADCCD1"
+                android:layout_gravity="left"
+                android:textSize="14dp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/sobrenomeinputlayout">
+
+                <EditText
+                    android:id="@+id/sobrenomeinput"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/login_input"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:gravity="center" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/text_cpf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CPF"
+                android:textColor="#ADCCD1"
+                android:layout_gravity="left"
+                android:textSize="14dp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/cpfinputlayout">
+
+                <EditText
+                    android:id="@+id/cpfinput"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/login_input"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:gravity="center" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/text_telefone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telefone"
+                android:textColor="#ADCCD1"
+                android:layout_gravity="left"
+                android:textSize="14dp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/telefoneinputlayout">
+
+                <EditText
+                    android:id="@+id/telefoneinput"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/login_input"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:gravity="center" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/text_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="E-mail (opcional)"
+                android:textColor="#ADCCD1"
+                android:layout_gravity="left"
+                android:textSize="14dp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/emailinputlayout">
+
+                <EditText
+                    android:id="@+id/emailinput"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/login_input"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"
+                    android:gravity="center" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/text_senha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Senha"
+                android:textColor="#ADCCD1"
+                android:layout_gravity="left"
+                android:textSize="14dp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/senhainputlayout">
+
+                <EditText
+                    android:id="@+id/senhainput"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/login_input"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:gravity="center" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/button_cadastrar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="CADASTRAR"
+                android:textColor="#01C7CA"
+                android:background="@drawable/login_conectar_button"
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

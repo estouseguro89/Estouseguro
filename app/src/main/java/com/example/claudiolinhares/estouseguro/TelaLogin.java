@@ -1,6 +1,7 @@
 package com.example.claudiolinhares.estouseguro;
 
 import android.arch.persistence.room.Room;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -38,6 +39,7 @@ public class TelaLogin extends AppCompatActivity implements View.OnClickListener
         button_conectar = (Button) findViewById(R.id.button_conectar);
         button_cadastrar = (Button) findViewById(R.id.button_cadastrar);
         button_conectar.setOnClickListener(this);
+        button_cadastrar.setOnClickListener(this);
 
         //Altera as Fontes
         Typeface font = Typeface.createFromAsset(getAssets(),"impact.ttf");
@@ -52,7 +54,7 @@ public class TelaLogin extends AppCompatActivity implements View.OnClickListener
         //Criando o database
         db = getAppDatabase(this);
 
-        User user_claudio = new User("091.289.116-52","456");
+        //User user_claudio = new User("091.289.116-52","456");
         //db.userDao().insertAll(user_claudio);
     }
 
@@ -61,7 +63,7 @@ public class TelaLogin extends AppCompatActivity implements View.OnClickListener
             case  R.id.button_conectar: {
                 String usuario = cpfinput.getText().toString();
                 String senha = senhainput.getText().toString();
-                User userLogin = db.userDao().findLogin(usuario,senha);
+                User userLogin = db.userDao().findLogin(usuario,TelaCadastro.md5(senha));
                 if(userLogin == null) {
                     cpfinputlayout.setError("CPF Inválido");
                     senhainputlayout.setError("Senha Inválida");
@@ -69,7 +71,12 @@ public class TelaLogin extends AppCompatActivity implements View.OnClickListener
                 else
                 {
                     System.out.println("Logado");
+                    startActivity(new Intent(this, MainActivity.class));
                 }
+                break;
+            }
+            case  R.id.button_cadastrar: {
+                startActivity(new Intent(this, TelaCadastro.class));
                 break;
             }
         }
