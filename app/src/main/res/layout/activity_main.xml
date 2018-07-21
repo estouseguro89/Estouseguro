@@ -18,69 +18,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
+            android:layout_margin="20dp"
             android:id="@+id/menu_contatos">
 
-            <!--Inicio Menu Button -->
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <Button
-                    android:id="@+id/menu_button"
-                    android:layout_width="80dp"
-                    android:layout_height="70dp"
-                    android:background="@drawable/menu_button" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_margin="20dp"
-                    >
-
-                        <TextView
-                            android:id="@+id/menu_button_background1"
-                            android:layout_width="31dp"
-                            android:layout_height="8dp"
-                            android:layout_marginLeft="5dp"
-
-                            android:gravity="center_vertical"
-                            android:layout_gravity="center_vertical"
-                            android:background="@drawable/menu_button_background" />
-
-                        <TextView
-                            android:id="@+id/menu_button_background2"
-                            android:layout_width="31dp"
-                            android:layout_height="8dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="5dp"
-                            android:gravity="center_vertical"
-                            android:layout_gravity="center_vertical"
-                            android:background="@drawable/menu_button_background" />
-
-                        <TextView
-                            android:id="@+id/text_menu"
-                            android:layout_width="50dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="5dp"
-                            android:gravity="center_vertical"
-                            android:layout_gravity="center_vertical"
-                            android:text="MENU"
-                            android:textColor="#00CDCD"
-                            android:textSize="14dp" />
-
-                </LinearLayout>
-                <!-- Fim Menu Button -->
-
-
-
-            </RelativeLayout>
+            <Button
+                android:id="@+id/menu_button"
+                android:layout_width="42dp"
+                android:layout_height="43dp"
+                android:background="@drawable/ic_menu_icon" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingRight="15dp"
                 android:gravity="center"
 
                 >

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/main_header_selector"
+    android:gravity="top"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:paddingTop="10dp"
+    android:paddingRight="50dp"
+    android:divider="@drawable/empty_tall_divider"
+    android:showDividers="middle"
+    android:paddingLeft="50dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:divider="@drawable/empty_tall_divider"
+        android:showDividers="middle">
+
+
+            <Button
+                android:id="@+id/menu_button"
+                android:layout_width="42dp"
+                android:layout_height="43dp"
+                android:layout_gravity="left"
+                android:background="@drawable/ic_menu_icon" />
+
+
+        <ImageView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/line"/>
+
+        <TextView
+            android:id="@+id/text_alterarsenha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alterar Senha"
+            android:textColor="#01C7CA"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/empty_tall_divider_pequeno"
+            android:showDividers="middle"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_senhaantiga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Senha Antiga"
+                android:textColor="#ADCCD1"
+                android:layout_gravity="left"
+                android:textSize="14dp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/senhaantigainputlayout">
+
+                <EditText
+                    android:id="@+id/senhaantigainput"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/login_input"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:gravity="center" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/text_novasenha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nova Senha"
+                android:textColor="#ADCCD1"
+                android:layout_gravity="left"
+                android:textSize="14dp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/novasenhainputlayout">
+
+                <EditText
+                    android:id="@+id/novasenhainput"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/login_input"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:gravity="center" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/text_repetirnovasenha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Repetir Nova Senha"
+                android:textColor="#ADCCD1"
+                android:layout_gravity="left"
+                android:textSize="14dp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/repetirnovasenhainputlayout">
+
+                <EditText
+                    android:id="@+id/repetirnovasenhainput"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/login_input"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:gravity="center" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/button_salvar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="SALVAR"
+                android:textColor="#01C7CA"
+                android:background="@drawable/alterarsenha_salvar_button"
+                android:textSize="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

@@ -71,7 +71,9 @@ public class TelaLogin extends AppCompatActivity implements View.OnClickListener
                 else
                 {
                     System.out.println("Logado");
-                    startActivity(new Intent(this, MainActivity.class));
+                    Intent it = new Intent(this, MainActivity.class);
+                    it.putExtra("CPF", usuario);
+                    startActivity(it);
                 }
                 break;
             }

@@ -1,6 +1,7 @@
 package com.example.claudiolinhares.estouseguro;
 
 import android.content.ClipData;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -31,7 +32,7 @@ import com.example.claudiolinhares.estouseguro.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView texto_fonte, arraste_esq, arraste_dir, contatos_text,cadeado, text_menu,ok,min, dispositivo, dispositivo2;
+    TextView texto_fonte, arraste_esq, arraste_dir, contatos_text,cadeado, ok,min, dispositivo, dispositivo2;
     Button ver_relatorio,menu_button, contatos_button;
     ImageView image_view,image_view_direito, estouseguro_background, estouseguro2_background,button1, button2,b;
     LinearLayout linear_estouseguro;
@@ -47,6 +48,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Pega a intent de outra activity
+        Intent it = getIntent();
+
+        //Recuperei a string da outra activity
+        cpf = it.getStringExtra("CPF");
 
         panic = false;
 
@@ -90,9 +97,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         menu_button = (Button) findViewById(R.id.menu_button);
         menu_button.setTypeface(font);
-
-        text_menu = (TextView) findViewById(R.id.text_menu);
-        text_menu.setTypeface(font);
 
         contatos_button = (Button) findViewById(R.id.contatos_button);
 
@@ -215,6 +219,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         contatos_button.setOnClickListener(this);
     }
 
+    private String cpf;
+
     public void onClick(View v) {
         switch (v.getId()) {
             case  R.id.ver_relatorio: {
@@ -223,6 +229,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             case  R.id.menu_button: {
                 System.out.println("menu button");
+                Intent it = new Intent(this, TelaAlterarSenha.class);
+                it.putExtra("CPF", cpf);
+                startActivity(it);
                 break;
             }
             case  R.id.contatos_button: {

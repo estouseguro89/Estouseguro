@@ -1,5 +1,7 @@
 package com.example.claudiolinhares.estouseguro;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -27,6 +29,7 @@ public class TelaCadastro extends AppCompatActivity implements View.OnClickListe
     EditText cpfinput,nomeinput,sobrenomeinput,telefoneinput,emailinput,senhainput;
     TextInputLayout cpfinputlayout,nomeinputlayout,sobrenomeinputlayout,telefoneinputlayout,emailinputlayout,senhainputlayout;
     AppDatabase db;
+    private AlertDialog alerta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,6 +135,24 @@ public class TelaCadastro extends AppCompatActivity implements View.OnClickListe
                     if (userLogin == null) {
                         User new_user = new User(cpf, md5(password), nome, lastName, email, telefone);
                         db.userDao().insertAll(new_user);
+
+
+                        //Cria o gerador do AlertDialog
+                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                        //define o titulo
+                        builder.setTitle("Cadastro");
+                        //define a mensagem
+                        builder.setMessage("Cadastro realizado com sucesso!");
+                        //define um botão como positivo
+                        builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                finish();
+                            }
+                        });
+                        //cria o AlertDialog
+                        alerta = builder.create();
+                        //Exibe
+                        alerta.show();
                     }
                     else
                     {
