@@ -229,9 +229,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             case  R.id.menu_button: {
                 System.out.println("menu button");
-                Intent it = new Intent(this, TelaAlterarSenha.class);
+                Intent it = new Intent(this, TelaMenu.class);
+                it.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 it.putExtra("CPF", cpf);
-                startActivity(it);
+                startActivityForResult(it, 0);
+                overridePendingTransition(0,0); //0 for no animation
+                //startActivity(it);
                 break;
             }
             case  R.id.contatos_button: {

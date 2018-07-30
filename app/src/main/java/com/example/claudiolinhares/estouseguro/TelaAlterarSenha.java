@@ -26,7 +26,7 @@ import static com.example.claudiolinhares.estouseguro.database.AppDatabase.getAp
 public class TelaAlterarSenha extends AppCompatActivity implements View.OnClickListener{
 
     TextView text_alterarsenha;
-    Button button_salvar;
+    Button button_salvar,menu_button;
     EditText senhaantigainput,novasenhainput,repetirnovasenhainput;
     TextInputLayout senhaantigainputlayout,novasenhainputlayout,repetirnovasenhainputlayout;
     AppDatabase db;
@@ -47,6 +47,7 @@ public class TelaAlterarSenha extends AppCompatActivity implements View.OnClickL
 
         text_alterarsenha = (TextView) findViewById(R.id.text_alterarsenha);
         button_salvar = (Button) findViewById(R.id.button_salvar);
+        menu_button = (Button) findViewById(R.id.menu_button);
 
         senhaantigainput = (EditText) findViewById(R.id.senhaantigainput);
         novasenhainput = (EditText) findViewById(R.id.novasenhainput);
@@ -63,13 +64,24 @@ public class TelaAlterarSenha extends AppCompatActivity implements View.OnClickL
         button_salvar.setTypeface(font);
 
         button_salvar.setOnClickListener(this);
+        menu_button.setOnClickListener(this);
 
         db = getAppDatabase(this);
     }
 
+    Intent intentfecha;
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case  R.id.menu_button: {
+                Intent intent = new Intent(this, TelaMenu.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                intent.putExtra("CPF", cpf);
+                startActivityForResult(intent, 0);
+                overridePendingTransition(0,0); //0 for no animation
+                //startActivity(new Intent(this, TelaMenu.class));
+                break;
+            }
             case  R.id.button_salvar: {
 
                 senhaantigainputlayout.setErrorEnabled(false);
@@ -97,10 +109,14 @@ public class TelaAlterarSenha extends AppCompatActivity implements View.OnClickL
                             builder.setTitle("Senha");
                             //define a mensagem
                             builder.setMessage("Senha alterada com sucesso!");
+                            intentfecha = new Intent(this, MainActivity.class);
+                            intentfecha.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                             //define um botão como positivo
                             builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface arg0, int arg1) {
-                                    finish();
+
+                                    startActivityForResult(intentfecha, 0);
+                                    overridePendingTransition(0,0); //0 for no animation
                                 }
                             });
                             //cria o AlertDialog

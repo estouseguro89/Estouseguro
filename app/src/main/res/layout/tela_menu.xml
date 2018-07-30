@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/main_header_selector"
+    android:gravity="top"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:paddingTop="10dp"
+    android:paddingRight="50dp"
+    android:divider="@drawable/empty_tall_divider"
+    android:showDividers="middle"
+    android:paddingLeft="50dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:divider="@drawable/empty_tall_divider"
+        android:showDividers="middle">
+
+
+            <Button
+                android:id="@+id/menu_button"
+                android:layout_width="42dp"
+                android:layout_height="43dp"
+                android:layout_gravity="left"
+                android:background="@drawable/ic_menu_icon" />
+
+
+        <ImageView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/line"/>
+
+        <Button
+            android:id="@+id/fechar_menu"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right"
+            android:background="@drawable/ic_x" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/empty_tall_divider_pequeno"
+            android:showDividers="middle"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/bt_dadospessoais"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dados Pessoais"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:textAllCaps="false"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/bt_alterarsenha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alterar Senha"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:textAllCaps="false"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/bt_config"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Configurações"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:textAllCaps="false"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/bt_contatosamigos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contatos Amigos"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:textAllCaps="false"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/bt_mapaalertas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mapa de Alertas"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:textAllCaps="false"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/bt_relatorio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Relatório"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:textAllCaps="false"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/bt_termos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Termos de Uso"
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:textAllCaps="false"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
