@@ -56,6 +56,7 @@ public class TelaMenu extends AppCompatActivity implements View.OnClickListener{
 
         fechar_menu.setOnClickListener(this);
         bt_alterarsenha.setOnClickListener(this);
+        bt_contatosamigos.setOnClickListener(this);
 
     }
 
@@ -72,6 +73,14 @@ public class TelaMenu extends AppCompatActivity implements View.OnClickListener{
             case  R.id.bt_alterarsenha: {
                 //startActivity(new Intent(this, TelaAlterarSenha.class));
                 Intent it = new Intent(this, TelaAlterarSenha.class);
+                it.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                it.putExtra("CPF", cpf);
+                startActivityForResult(it, 0);
+                overridePendingTransition(0,0); //0 for no animation
+                break;
+            }
+            case  R.id.bt_contatosamigos: {
+                Intent it = new Intent(this, TelaContatos.class);
                 it.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 it.putExtra("CPF", cpf);
                 startActivityForResult(it, 0);

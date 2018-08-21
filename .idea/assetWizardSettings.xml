@@ -14,11 +14,11 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="height" value="47" />
-                            <entry key="outputName" value="ic_x" />
+                            <entry key="height" value="831" />
+                            <entry key="outputName" value="ic_reject_contact" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="C:\x.svg" />
-                            <entry key="width" value="47" />
+                            <entry key="sourceFile" value="C:\reject_contact.svg" />
+                            <entry key="width" value="888" />
                           </map>
                         </option>
                       </PersistentState>

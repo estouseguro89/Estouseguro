@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/main_header_selector"
+    android:gravity="top"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:paddingTop="10dp"
+    android:paddingRight="50dp"
+    android:divider="@drawable/empty_tall_divider"
+    android:showDividers="middle"
+    android:paddingLeft="50dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:divider="@drawable/empty_tall_divider"
+        android:showDividers="middle">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <Button
+                android:id="@+id/menu_button"
+                android:layout_width="42dp"
+                android:layout_height="43dp"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/ic_menu_icon" />
+
+            <Button
+                android:id="@+id/contatos"
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_contatos_2"/>
+
+        </RelativeLayout>
+
+
+        <ImageView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/line"/>
+
+        <TextView
+            android:id="@+id/text_contatos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contatos"
+            android:textColor="#01C7CA"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/empty_tall_divider"
+            android:showDividers="middle"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/empty_tall_divider_pequeno"
+                android:showDividers="middle">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                    android:id="@+id/nome_contato1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pedro Amorim"
+                    android:textColor="#C1CBCA"
+                    android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/telefone_contato1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(34) 9 9888-9999"
+                        android:textColor="#C1CBCA"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:divider="@drawable/empty_tall_horizontal_divider"
+                    android:layout_alignParentRight="true"
+                    android:orientation="horizontal"
+                    android:showDividers="middle">
+
+                    <TextView
+                        android:id="@+id/status_contato1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ESTOU\nSEGURO"
+                        android:gravity="right"
+                        android:textColor="#9DFC00"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/ic_cadeado"
+                        android:layout_width="43dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/cadeado_verde" />
+
+                    <TextView
+                        android:id="@+id/ic_setadireita"
+                        android:layout_width="17dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic_seta" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/line_contato1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@drawable/line_dark"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/empty_tall_divider_pequeno"
+                android:showDividers="middle">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/nome_contato2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Maria Amorim"
+                        android:textColor="#C1CBCA"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/telefone_contato2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(34) 9 9888-9998"
+                        android:textColor="#C1CBCA"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:divider="@drawable/empty_tall_horizontal_divider"
+                    android:layout_alignParentRight="true"
+                    android:orientation="horizontal"
+                    android:showDividers="middle">
+
+                    <TextView
+                        android:id="@+id/status_contato2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="EM RISCO\nA 30 MIN"
+                        android:textColor="#EE9C1E"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/ic_cadeado2"
+                        android:layout_width="43dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/cadeado_laranja" />
+
+                    <TextView
+                        android:id="@+id/ic_setadireita2"
+                        android:layout_width="17dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic_seta" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/line_contato2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@drawable/line_dark"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/empty_tall_divider_pequeno"
+                android:showDividers="middle">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/nome_contato3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Alberta Amorim"
+                        android:textColor="#C1CBCA"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/telefone_contato3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(34) 9 9888-9998"
+                        android:textColor="#C1CBCA"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:divider="@drawable/empty_tall_horizontal_divider"
+                    android:layout_alignParentRight="true"
+                    android:orientation="horizontal"
+                    android:showDividers="middle">
+
+                    <TextView
+                        android:id="@+id/status_contato3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="EM RISCO\nAGORA"
+                        android:textColor="#FE0003"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/ic_cadeado3"
+                        android:layout_width="43dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/cadeado_vermelho" />
+
+                    <TextView
+                        android:id="@+id/ic_setadireita3"
+                        android:layout_width="17dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic_seta" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/line_contato3"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@drawable/line_dark"/>
+
+            <TextView
+                android:id="@+id/text_convitesrecebidos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Convites Recebidos"
+                android:textColor="#03C8FF"
+                android:textSize="17dp" />
+
+            <RelativeLayout
+                android:id="@+id/contato_recebido1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@drawable/empty_tall_divider_pequeno"
+                android:showDividers="middle">
+
+                <Button
+                    android:id="@+id/ic_reject_contact"
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:background="@drawable/ic_reject_contact" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center_vertical|center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/nome_contato4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Maria Tales"
+                        android:textColor="#C1CBCA"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/telefone_contato4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(34) 9 9888-9998"
+                        android:textColor="#C1CBCA"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/ic_accept_contact"
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/ic_accept_contact" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/line_convites_recebidos1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@drawable/line_dark"/>
+
+            <RelativeLayout
+                android:id="@+id/contato_recebido2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@drawable/empty_tall_divider_pequeno"
+                android:showDividers="middle">
+
+                <Button
+                    android:id="@+id/ic_reject_contact2"
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentLeft="true"
+                    android:background="@drawable/ic_reject_contact" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center_vertical|center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/nome_contato5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Giovana Costa"
+                        android:textColor="#C1CBCA"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/telefone_contato5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(34) 9 9888-9978"
+                        android:textColor="#C1CBCA"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/ic_accept_contact2"
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/ic_accept_contact" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/line_convites_recebidos2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@drawable/line_dark"/>
+
+            <TextView
+                android:id="@+id/text_convitesenivados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Convites Enviados"
+                android:textColor="#01C7CA"
+                android:textSize="17dp" />
+
+            <RelativeLayout
+                android:id="@+id/contato_enivado"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@drawable/empty_tall_divider_pequeno"
+                android:showDividers="middle">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/nome_contato6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Berta Moura"
+                        android:textColor="#C1CBCA"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/telefone_contato6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(34) 9 9888-7598"
+                        android:textColor="#C1CBCA"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/ic_reject_contact_send"
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/ic_reject_contact" />
+
+            </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/line_convites_send1"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@drawable/line_dark"/>
+
+            <RelativeLayout
+                android:id="@+id/contato_enivado2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@drawable/empty_tall_divider_pequeno"
+                android:showDividers="middle">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/nome_contato7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="Camila Cunha"
+                        android:textColor="#C1CBCA"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/telefone_contato7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(34) 9 9888-8978"
+                        android:textColor="#C1CBCA"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/ic_reject_contact_send2"
+                    android:layout_width="35dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/ic_reject_contact" />
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/line_convites_send2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@drawable/line_dark"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
