@@ -15,8 +15,6 @@ import android.widget.TextView;
 import com.example.claudiolinhares.estouseguro.database.AppDatabase;
 import com.example.claudiolinhares.estouseguro.database.User;
 
-import static com.example.claudiolinhares.estouseguro.database.AppDatabase.getAppDatabase;
-
 public class TelaMenu extends AppCompatActivity implements View.OnClickListener{
 
     Button fechar_menu,bt_dadospessoais,bt_alterarsenha,bt_config,bt_contatosamigos,bt_mapaalertas,bt_relatorio,bt_termos;

@@ -30,4 +30,7 @@ public interface UserDao {
 
     @Update
     public void updateUsers(User... user);
+
+    //@Query("UPDATE user SET contacts=:contact WHERE cpf LIKE :cpf")
+    //void update(List<Contact> contact, String cpf);
 }

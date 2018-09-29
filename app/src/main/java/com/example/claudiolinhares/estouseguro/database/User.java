@@ -3,6 +3,11 @@ package com.example.claudiolinhares.estouseguro.database;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.Relation;
+import android.arch.persistence.room.TypeConverters;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User{
@@ -20,8 +25,12 @@ public class User{
     private String telefone;
     @ColumnInfo(name = "password")
     private String password;
+    //@ColumnInfo(name = "contacts")
+    //@Relation(parentColumn = "id", entityColumn = "id", entity = Contact.class, projection = {"name"})
+    @TypeConverters(GithubTypeConverters.class)
+    private List<Contact> contacts;
 
-    public User(String cpf, String password,String name,String lastname,String email, String telefone)
+    public User(String cpf, String password,String name,String lastname,String email, String telefone, List<Contact> contacts)
     {
         this.cpf = cpf;
         this.password = password;
@@ -29,6 +38,7 @@ public class User{
         this.setLastname(lastname);
         this.setEmail(email);
         this.setTelefone(telefone);
+        this.contacts = contacts;
     }
 
     public int getId() {
@@ -85,5 +95,17 @@ public class User{
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(Contact contact) {
+        this.contacts.add(contact);
+    }
+
+    public void setAllContacts(List<Contact> contacts) {
+        this.contacts = contacts;
     }
 }

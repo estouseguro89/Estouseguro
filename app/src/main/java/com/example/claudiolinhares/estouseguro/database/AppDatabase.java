@@ -5,7 +5,7 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-@Database(entities = {User.class}, version = 2)
+@Database(entities = {User.class, Contact.class}, version = 5)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;
@@ -15,9 +15,10 @@ public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase getAppDatabase(Context context) {
         if (INSTANCE == null) {
             INSTANCE =
-                    Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "user-database")
+                    Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "estouseguro-database")
                             // allow queries on the main thread.
                             // Don't do this on a real app! See PersistenceBasicSample for an example.
+                            .fallbackToDestructiveMigration()
                             .allowMainThreadQueries()
                             .build();
         }
@@ -27,4 +28,5 @@ public abstract class AppDatabase extends RoomDatabase {
     public static void destroyInstance() {
         INSTANCE = null;
     }
+
 }

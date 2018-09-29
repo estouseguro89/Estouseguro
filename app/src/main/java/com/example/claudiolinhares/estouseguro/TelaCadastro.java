@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,12 +14,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.claudiolinhares.estouseguro.database.AppDatabase;
+import com.example.claudiolinhares.estouseguro.database.Contact;
 import com.example.claudiolinhares.estouseguro.database.User;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 import static com.example.claudiolinhares.estouseguro.database.AppDatabase.getAppDatabase;
 
@@ -69,7 +76,7 @@ public class TelaCadastro extends AppCompatActivity implements View.OnClickListe
         MaskTextWatcher mtw = new MaskTextWatcher(cpfinput,smf);
         cpfinput.addTextChangedListener(mtw);
 
-        //Criando a mascara CPF
+        //Criando a mascara Telefone
         SimpleMaskFormatter smf2 = new SimpleMaskFormatter("(NN) NNNNNNNNN");
         MaskTextWatcher mtw2 = new MaskTextWatcher(telefoneinput,smf2);
         telefoneinput.addTextChangedListener(mtw2);
@@ -133,7 +140,8 @@ public class TelaCadastro extends AppCompatActivity implements View.OnClickListe
                 if (!erro) {
                     User userLogin = db.userDao().findAlreadyExist(cpf);
                     if (userLogin == null) {
-                        User new_user = new User(cpf, md5(password), nome, lastName, email, telefone);
+                        List<Contact> contatos = new ArrayList();
+                        User new_user = new User(cpf, md5(password), nome, lastName, email, telefone, contatos);
                         db.userDao().insertAll(new_user);
 
 

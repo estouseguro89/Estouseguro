@@ -62,6 +62,7 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
+            android:id="@+id/layout_raiz1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:divider="@drawable/empty_tall_divider"
@@ -404,7 +405,7 @@
                 android:textColor="#01C7CA"
                 android:textSize="17dp" />
 
-            <RelativeLayout
+            <!--<RelativeLayout
                 android:id="@+id/contato_enivado"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -497,7 +498,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="@drawable/line_dark"/>
-
+            -->
         </LinearLayout>
     </ScrollView>
 
