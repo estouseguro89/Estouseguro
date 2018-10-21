@@ -82,21 +82,14 @@
                 android:layout_gravity="left"
                 android:textSize="14dp" />
 
-            <android.support.design.widget.TextInputLayout
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/nomeinputlayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/nomeinputlayout">
-
-                <EditText
-                    android:id="@+id/nomeinput"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/login_input"
-                    android:inputType="text"
-                    android:singleLine="true"
-                    android:gravity="center" />
-
-            </android.support.design.widget.TextInputLayout>
+                android:layout_height="45dp"
+                android:background="@drawable/login_input"
+                android:inputType="textCapWords"
+                android:singleLine="true"
+                android:gravity="center"/>
 
             <TextView
                 android:id="@+id/text_sobrenome"
@@ -107,22 +100,15 @@
                 android:layout_gravity="left"
                 android:textSize="14dp" />
 
-            <android.support.design.widget.TextInputLayout
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/sobrenomeinputlayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/sobrenomeinputlayout">
-
-                <EditText
-                    android:id="@+id/sobrenomeinput"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/login_input"
-                    android:inputType="text"
-                    android:singleLine="true"
-                    android:gravity="center" />
-
-            </android.support.design.widget.TextInputLayout>
-
+                android:layout_height="45dp"
+                android:background="@drawable/login_input"
+                android:inputType="textCapWords"
+                android:singleLine="true"
+                android:gravity="center"/>
 
             <TextView
                 android:id="@+id/text_cpf"
@@ -133,21 +119,14 @@
                 android:layout_gravity="left"
                 android:textSize="14dp" />
 
-            <android.support.design.widget.TextInputLayout
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/cpfinputlayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/cpfinputlayout">
-
-                <EditText
-                    android:id="@+id/cpfinput"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/login_input"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    android:gravity="center" />
-
-            </android.support.design.widget.TextInputLayout>
+                android:layout_height="45dp"
+                android:background="@drawable/login_input"
+                android:inputType="number"
+                android:singleLine="true"
+                android:gravity="center"/>
 
             <TextView
                 android:id="@+id/text_telefone"
@@ -158,22 +137,14 @@
                 android:layout_gravity="left"
                 android:textSize="14dp" />
 
-            <android.support.design.widget.TextInputLayout
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/telefoneinputlayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/telefoneinputlayout">
-
-                <EditText
-                    android:id="@+id/telefoneinput"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/login_input"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    android:gravity="center" />
-
-            </android.support.design.widget.TextInputLayout>
-
+                android:layout_height="45dp"
+                android:background="@drawable/login_input"
+                android:inputType="number"
+                android:singleLine="true"
+                android:gravity="center"/>
 
             <TextView
                 android:id="@+id/text_email"
@@ -184,21 +155,14 @@
                 android:layout_gravity="left"
                 android:textSize="14dp" />
 
-            <android.support.design.widget.TextInputLayout
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/emailinputlayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/emailinputlayout">
-
-                <EditText
-                    android:id="@+id/emailinput"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/login_input"
-                    android:inputType="textEmailAddress"
-                    android:singleLine="true"
-                    android:gravity="center" />
-
-            </android.support.design.widget.TextInputLayout>
+                android:layout_height="45dp"
+                android:background="@drawable/login_input"
+                android:inputType="textEmailAddress"
+                android:singleLine="true"
+                android:gravity="center"/>
 
             <TextView
                 android:id="@+id/text_senha"
@@ -209,21 +173,33 @@
                 android:layout_gravity="left"
                 android:textSize="14dp" />
 
-            <android.support.design.widget.TextInputLayout
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/senhainputlayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/senhainputlayout">
+                android:layout_height="45dp"
+                android:background="@drawable/login_input"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:gravity="center"/>
 
-                <EditText
-                    android:id="@+id/senhainput"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:background="@drawable/login_input"
-                    android:inputType="textPassword"
-                    android:singleLine="true"
-                    android:gravity="center" />
+            <TextView
+                android:id="@+id/text_senha2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Repitir Senha"
+                android:textColor="#ADCCD1"
+                android:layout_gravity="left"
+                android:textSize="14dp" />
 
-            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/senhainputlayoutrepetir"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/login_input"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:gravity="center"/>
+
 
             <Button
                 android:id="@+id/button_cadastrar"

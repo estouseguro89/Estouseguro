@@ -17,7 +17,7 @@ import com.example.claudiolinhares.estouseguro.database.User;
 
 public class TelaMenu extends AppCompatActivity implements View.OnClickListener{
 
-    Button fechar_menu,bt_dadospessoais,bt_alterarsenha,bt_config,bt_contatosamigos,bt_mapaalertas,bt_relatorio,bt_termos;
+    Button fechar_menu,bt_dadospessoais,bt_alterarsenha,bt_config,bt_contatosamigos,bt_mapaalertas,bt_relatorio,bt_termos,bt_sair;
     String cpf;
 
     @Override
@@ -39,6 +39,7 @@ public class TelaMenu extends AppCompatActivity implements View.OnClickListener{
         bt_mapaalertas = (Button) findViewById(R.id.bt_mapaalertas);
         bt_relatorio = (Button) findViewById(R.id.bt_relatorio);
         bt_termos = (Button) findViewById(R.id.bt_termos);
+        bt_sair = (Button) findViewById(R.id.bt_sair);
 
 
         //Altera as Fontes
@@ -50,11 +51,14 @@ public class TelaMenu extends AppCompatActivity implements View.OnClickListener{
         bt_mapaalertas.setTypeface(font);
         bt_relatorio.setTypeface(font);
         bt_termos.setTypeface(font);
+        bt_sair.setTypeface(font);
 
 
         fechar_menu.setOnClickListener(this);
         bt_alterarsenha.setOnClickListener(this);
         bt_contatosamigos.setOnClickListener(this);
+        bt_config.setOnClickListener(this);
+        bt_sair.setOnClickListener(this);
 
     }
 
@@ -62,9 +66,10 @@ public class TelaMenu extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fechar_menu: {
-                Intent intent = new Intent(this, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivityForResult(intent, 0);
+                Intent it = new Intent(this, MainActivity.class);
+                it.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                it.putExtra("CPF", cpf);
+                startActivityForResult(it, 0);
                 overridePendingTransition(0,0); //0 for no animation
                 break;
             }
@@ -81,6 +86,21 @@ public class TelaMenu extends AppCompatActivity implements View.OnClickListener{
                 Intent it = new Intent(this, TelaContatos.class);
                 it.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 it.putExtra("CPF", cpf);
+                startActivityForResult(it, 0);
+                overridePendingTransition(0,0); //0 for no animation
+                break;
+            }
+            case R.id.bt_config: {
+                Intent it = new Intent(this, TelaConfig.class);
+                it.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                it.putExtra("CPF", cpf);
+                startActivityForResult(it, 0);
+                overridePendingTransition(0,0); //0 for no animation
+                break;
+            }
+            case R.id.bt_sair: {
+                Intent it = new Intent(this, TelaLogin.class);
+                it.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivityForResult(it, 0);
                 overridePendingTransition(0,0); //0 for no animation
                 break;

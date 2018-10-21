@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/main_header_selector"
+    android:gravity="top"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:paddingTop="10dp"
+    android:paddingRight="50dp"
+    android:divider="@drawable/empty_tall_divider"
+    android:showDividers="middle"
+    android:paddingLeft="50dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:divider="@drawable/empty_tall_divider"
+        android:showDividers="middle">
+
+
+            <Button
+                android:id="@+id/menu_button"
+                android:layout_width="42dp"
+                android:layout_height="43dp"
+                android:layout_gravity="left"
+                android:background="@drawable/ic_menu_icon" />
+
+
+        <ImageView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/line"/>
+
+        <TextView
+            android:id="@+id/text_config"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Configurações"
+            android:textColor="#01C7CA"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/empty_tall_divider_pequeno"
+            android:showDividers="middle"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_senhaantiga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quando eu marcar que estou em risco, desejo que:"
+                android:textColor="#ADCCD1"
+                android:layout_gravity="left"
+                android:textSize="15dp" />
+
+            <CheckBox
+                android:id="@+id/configsms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Seja enviado um SMS para todos os meus amigos cadastrados."
+                android:textColor="#FFFFFF"
+                android:textSize="16dp"
+                android:buttonTint="#00CCCB" />
+
+
+            <TextView
+                android:id="@+id/text_repetirnovasenha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(Atenção, se habilitada essa funcionalidade podem ser cobradas tarifas da sua operadora)"
+                android:textColor="#ADCCD1"
+                android:layout_gravity="left"
+                android:layout_marginLeft="30dp"
+                android:textSize="13dp" />
+
+            <CheckBox
+                android:id="@+id/configlocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Seja exibida a localização do meu celular para todos os meus amigos cadastrados."
+                android:textColor="#FFFFFF"
+                android:textSize="16dp"
+                android:buttonTint="#00CCCB" />
+
+
+            <TextView
+                android:id="@+id/text_repetirnovasenha2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(Atenção, se habilitada essa funcionalidade, ao marcar que está em risco, a localização atual do seu celular será exposta e atualizada por até 15 minutos)"
+                android:textColor="#ADCCD1"
+                android:layout_gravity="left"
+                android:layout_marginLeft="30dp"
+                android:textSize="13dp" />
+
+
+
+            <CheckBox
+                android:id="@+id/configemail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Seja enviado um e-mail para todos os meus amigos cadastrados."
+                android:textColor="#FFFFFF"
+                android:textSize="16dp"
+                android:buttonTint="#00CCCB" />
+
+            <TextView
+                android:id="@+id/text_repetirnovasenha3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(Atenção, só receberão e-mail os seus amigos que tiverem cadastrado um e-mail)"
+                android:textColor="#ADCCD1"
+                android:layout_gravity="left"
+                android:layout_marginLeft="30dp"
+                android:textSize="13dp" />
+
+
+            <Button
+                android:id="@+id/button_salvar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="SALVAR"
+                android:textColor="#01C7CA"
+                android:background="@drawable/alterarsenha_salvar_button"
+                android:textSize="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

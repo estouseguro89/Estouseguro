@@ -3,10 +3,8 @@ package com.example.claudiolinhares.estouseguro.database;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
-import android.arch.persistence.room.Relation;
 import android.arch.persistence.room.TypeConverters;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,6 +23,12 @@ public class User{
     private String telefone;
     @ColumnInfo(name = "password")
     private String password;
+    @ColumnInfo(name = "configsms")
+    private boolean configsms;
+    @ColumnInfo(name = "configlocation")
+    private boolean configlocation;
+    @ColumnInfo(name = "configemail")
+    private boolean configemail;
     //@ColumnInfo(name = "contacts")
     //@Relation(parentColumn = "id", entityColumn = "id", entity = Contact.class, projection = {"name"})
     @TypeConverters(GithubTypeConverters.class)
@@ -39,6 +43,9 @@ public class User{
         this.setEmail(email);
         this.setTelefone(telefone);
         this.contacts = contacts;
+        this.setConfigsms(false);
+        this.setConfiglocation(false);
+        this.setConfigemail(false);
     }
 
     public int getId() {
@@ -107,5 +114,29 @@ public class User{
 
     public void setAllContacts(List<Contact> contacts) {
         this.contacts = contacts;
+    }
+
+    public boolean isConfigsms() {
+        return configsms;
+    }
+
+    public void setConfigsms(boolean configsms) {
+        this.configsms = configsms;
+    }
+
+    public boolean isConfiglocation() {
+        return configlocation;
+    }
+
+    public void setConfiglocation(boolean configlocation) {
+        this.configlocation = configlocation;
+    }
+
+    public boolean isConfigemail() {
+        return configemail;
+    }
+
+    public void setConfigemail(boolean configemail) {
+        this.configemail = configemail;
     }
 }
