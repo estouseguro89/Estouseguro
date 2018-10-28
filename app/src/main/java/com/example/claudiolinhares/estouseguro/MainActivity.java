@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
@@ -20,6 +21,7 @@ import android.view.Display;
 import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.MotionEvent;
+import android.view.TouchDelegate;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -33,9 +35,10 @@ import com.example.claudiolinhares.estouseguro.R;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView texto_fonte, arraste_esq, arraste_dir, contatos_text,cadeado, ok,min, dispositivo, dispositivo2;
-    Button ver_relatorio,menu_button, contatos_button;
-    ImageView image_view,image_view_direito, estouseguro_background, estouseguro2_background,button1, button2,b;
+    Button ver_relatorio,menu_button, contatos_button,button2;
+    ImageView image_view,image_view_direito, estouseguro_background, estouseguro2_background,button1,b;
     LinearLayout linear_estouseguro;
+    RelativeLayout button3;
     View view;
 
     boolean panic;
@@ -79,12 +82,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         button1 = (ImageView) findViewById(R.id.button1);
-        button2 = (ImageView) findViewById(R.id.button2);
+        button2 = (Button) findViewById(R.id.button2);
+        button3 = (RelativeLayout) findViewById(R.id.button3);
 
 
         MyButtonsListener buttonsListener = new MyButtonsListener();
         button1.setOnDragListener(buttonsListener);
-        button2.setOnDragListener(buttonsListener);
+        //button2.setOnDragListener(buttonsListener);
+        button3.setOnDragListener(buttonsListener);
 
         ver_relatorio = (Button) findViewById(R.id.ver_relatorio);
         ver_relatorio.setTypeface(font);
@@ -217,6 +222,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ver_relatorio.setOnClickListener(this);
         menu_button.setOnClickListener(this);
         contatos_button.setOnClickListener(this);
+
+
+        final Rect rect = new Rect();
+        button2.getHitRect(rect);
+        rect.top += 100;    // increase top hit area
+        rect.left += 100;   // increase left hit area
+        rect.bottom += 100; // increase bottom hit area
+        rect.right += 100;  // increase right hit area
+        button2.setTouchDelegate( new TouchDelegate( rect , button2));
+
     }
 
     private String cpf;
@@ -228,7 +243,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             }
             case  R.id.menu_button: {
-                System.out.println("menu button");
                 Intent it = new Intent(this, TelaMenu.class);
                 it.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 it.putExtra("CPF", cpf);
@@ -238,7 +252,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             }
             case  R.id.contatos_button: {
-                System.out.println("contatos button");
+                Intent intent = new Intent(this, TelaContatos.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                intent.putExtra("CPF", cpf);
+                startActivityForResult(intent, 0);
+                overridePendingTransition(0,0); //0 for no animation
                 break;
             }
             //.... etc
@@ -259,14 +277,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case DragEvent.ACTION_DRAG_STARTED:
                     if(v.getId() == button1.getId())
                         v.setBackgroundResource(R.drawable.round_button1);
-                    if(v.getId() == button2.getId())
-                        v.setBackgroundResource(R.drawable.round_button2);
+                    //if(v.getId() == button3.getId())
+                        //v.setBackgroundResource(R.drawable.round_button2);
                     return true;
                 case DragEvent.ACTION_DRAG_ENTERED:
                     if(v.getId() == button1.getId())
                         v.setBackgroundResource(R.drawable.round_button1_hover);
-                    if(v.getId() == button2.getId())
-                        v.setBackgroundResource(R.drawable.round_button2_hover);
+                    //if(v.getId() == button3.getId())
+                        //v.setBackgroundResource(R.drawable.round_button2_hover);
                     return true;
                 case DragEvent.ACTION_DRAG_LOCATION:
                     //Log.i(TAG, "Location: "+event.getX()+":"+event.getY());
@@ -274,8 +292,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case DragEvent.ACTION_DRAG_EXITED:
                     if(v.getId() == button1.getId())
                         v.setBackgroundResource(R.drawable.round_button1);
-                    if(v.getId() == button2.getId())
-                        v.setBackgroundResource(R.drawable.round_button2);
+                    //if(v.getId() == button2.getId())
+                       // v.setBackgroundResource(R.drawable.round_button2);
                 case DragEvent.ACTION_DRAG_ENDED:
                     return true;
                 case DragEvent.ACTION_DROP:
@@ -288,8 +306,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             paginaPanico(false);
                             return false;
                         }
-                    } else if (v.getId() == button2.getId()) {
-                        v.setBackgroundResource(R.drawable.round_button2);
+                    } else if (v.getId() == button3.getId()) {
+                        //v.setBackgroundResource(R.drawable.round_button2);
 
                         //System.out.println("Dropped Successfully + id:" + v.getId());
                         if (!panic) {

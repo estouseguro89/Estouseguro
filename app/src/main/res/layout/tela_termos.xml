@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/main_header_selector"
+    android:gravity="top"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:paddingTop="10dp"
+    android:paddingRight="50dp"
+    android:divider="@drawable/empty_tall_divider"
+    android:showDividers="middle"
+    android:paddingLeft="50dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:divider="@drawable/empty_tall_divider"
+        android:showDividers="middle">
+
+
+            <Button
+                android:id="@+id/menu_button"
+                android:layout_width="42dp"
+                android:layout_height="43dp"
+                android:layout_gravity="left"
+                android:background="@drawable/ic_menu_icon" />
+
+
+        <ImageView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/line"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+            android:id="@+id/text_config"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Termos de Uso"
+            android:textColor="#01C7CA"
+            android:gravity="center"
+            android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/fechar_menu"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_x" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/empty_tall_divider_pequeno"
+            android:showDividers="middle"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_senhaantiga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Este termo de uso de plataforma de comentários (“Termo de Uso”) regulamenta a utilização da plataforma para a postagem de comentários em sites que integram o App, disponibilizados pela SEGURO S.A., empresa com sede na Cidade e Estado do Rio de Janeiro, na Rua Lopes Quintas, nº 303, inscrita no CNPJ/MF sob o nº 27.865.757/0001-02, por sua filial localizada na Avenida das Américas, nº 700, Bloco 2A, salas 101 a 316, na Cidade e Estado do Rio de Janeiro, CEP: 22.640-100, inscrita no CNPJ/MF sob nº 27.865.757/0024-90, doravante denominada simplesmente, pela SEGURO LTDA., empresa com sede na Avenida das Américas, nº 1650, Bloco 1 - salas 304 a 308, Bloco 2 - salas 103 a 111, 118, 119, 121, 122, 125 e 126 e Bloco 05 - Loja 101, salas 201 e 301, Barra da Tijuca, na Cidade e Estado do Rio de Janeiro, inscrita no CNPJ/MF sob o nº 00.811.990/0001-48, doravante denominada simplesmente “EstouSeguro” e pela SEGURO S/A,  com sede na Avenida Jaguaré, 1.485, São Paulo/SP, CEP 05342-900, inscrita no CNPJ/MF sob o nº de 04.067.191/0001-60, doravante denominada simplesmente “Editora”, e quando  00.811.990/0001-48, doravante denominada simplesmente “EstouSeguro” e pela SEGURO S/A,  com sede na Avenida Jaguaré, 1.485, São Paulo/SP, CEP 05342-900, inscrita no CNPJ/MF sob o nº de 04.067.191/0001-60, doravante denominada simplesmente “Editora”, e quando"
+                android:textColor="#ADCCD1"
+                android:layout_gravity="left"
+                android:textSize="15dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

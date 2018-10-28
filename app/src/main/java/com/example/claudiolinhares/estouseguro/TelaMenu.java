@@ -59,6 +59,8 @@ public class TelaMenu extends AppCompatActivity implements View.OnClickListener{
         bt_contatosamigos.setOnClickListener(this);
         bt_config.setOnClickListener(this);
         bt_sair.setOnClickListener(this);
+        bt_dadospessoais.setOnClickListener(this);
+        bt_termos.setOnClickListener(this);
 
     }
 
@@ -67,6 +69,14 @@ public class TelaMenu extends AppCompatActivity implements View.OnClickListener{
         switch (v.getId()) {
             case R.id.fechar_menu: {
                 Intent it = new Intent(this, MainActivity.class);
+                it.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                it.putExtra("CPF", cpf);
+                startActivityForResult(it, 0);
+                overridePendingTransition(0,0); //0 for no animation
+                break;
+            }
+            case R.id.bt_dadospessoais: {
+                Intent it = new Intent(this, TelaDados.class);
                 it.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 it.putExtra("CPF", cpf);
                 startActivityForResult(it, 0);
@@ -92,6 +102,14 @@ public class TelaMenu extends AppCompatActivity implements View.OnClickListener{
             }
             case R.id.bt_config: {
                 Intent it = new Intent(this, TelaConfig.class);
+                it.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                it.putExtra("CPF", cpf);
+                startActivityForResult(it, 0);
+                overridePendingTransition(0,0); //0 for no animation
+                break;
+            }
+            case R.id.bt_termos: {
+                Intent it = new Intent(this, TelaTermos.class);
                 it.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 it.putExtra("CPF", cpf);
                 startActivityForResult(it, 0);
