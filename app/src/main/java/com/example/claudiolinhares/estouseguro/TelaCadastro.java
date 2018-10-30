@@ -4,14 +4,18 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.text.InputType;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -33,8 +37,9 @@ import static com.example.claudiolinhares.estouseguro.database.AppDatabase.getAp
 
 public class TelaCadastro extends AppCompatActivity implements View.OnClickListener{
 
-    TextView text_anjo,text_cadastro;
+    TextView text_anjo,text_cadastro,button_termos;
     Button button_cadastrar;
+    CheckBox checkbox_termos;
     //EditText cpfinput,sobrenomeinput,telefoneinput,emailinput,senhainput;
     //TextInputLayout cpfinputlayout,sobrenomeinputlayout,telefoneinputlayout,emailinputlayout,senhainputlayout;
     TextInputEditText nomeinputlayout,cpfinputlayout,sobrenomeinputlayout,telefoneinputlayout,emailinputlayout,senhainputlayout,senhainputlayoutrepetir;
@@ -62,9 +67,11 @@ public class TelaCadastro extends AppCompatActivity implements View.OnClickListe
         senhainputlayout = (TextInputEditText) findViewById(R.id.senhainputlayout);
         senhainputlayoutrepetir = (TextInputEditText) findViewById(R.id.senhainputlayoutrepetir);
 
+        checkbox_termos = (CheckBox) findViewById(R.id.checkbox_termos);
 
         text_anjo = (TextView) findViewById(R.id.text_anjo);
         text_cadastro = (TextView) findViewById(R.id.text_cadastro);
+        button_termos = (TextView) findViewById(R.id.button_termos);
         button_cadastrar = (Button) findViewById(R.id.button_cadastrar);
 
 
@@ -85,12 +92,25 @@ public class TelaCadastro extends AppCompatActivity implements View.OnClickListe
         MaskTextWatcher mtw2 = new MaskTextWatcher(telefoneinputlayout,smf2);
         telefoneinputlayout.addTextChangedListener(mtw2);
 
+        String checkBoxText = "Eu li e concordo com os <a href='' >Termos de Uso</a>";
+
+        button_termos.setText(Html.fromHtml(checkBoxText));
+        button_termos.setMovementMethod(LinkMovementMethod.getInstance());
+        button_termos.setOnClickListener(this);
+
         db = getAppDatabase(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.button_termos:{
+                Intent intent = new Intent(this, TelaTermosCadastro.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivityForResult(intent, 0);
+                overridePendingTransition(0,0); //0 for no animation
+                break;
+            }
             case  R.id.button_cadastrar: {
                 String cpf = cpfinputlayout.getText().toString();
                 String nome = nomeinputlayout.getText().toString();
@@ -130,6 +150,13 @@ public class TelaCadastro extends AppCompatActivity implements View.OnClickListe
                 if (telefone.equals("")) {
                     telefoneinputlayout.setError("Digite um Telefone válido");
                     erro = true;
+                }
+                if(!checkbox_termos.isChecked()){
+                    checkbox_termos.setError("É preciso aceitar os Termos de Uso");
+                    erro = true;
+                }
+                else{
+                    checkbox_termos.setError(null);
                 }
 
                 if (!erro)
