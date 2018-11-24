@@ -18,6 +18,8 @@ import com.example.claudiolinhares.estouseguro.database.User;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 import static com.example.claudiolinhares.estouseguro.database.AppDatabase.getAppDatabase;
 
 public class TelaAdicionarContato extends AppCompatActivity implements View.OnClickListener{
@@ -111,44 +113,82 @@ public class TelaAdicionarContato extends AppCompatActivity implements View.OnCl
                         db.userDao().updateUsers(userLogin);
 
                         //Cria o gerador do AlertDialog
-                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                        //define o titulo
-                        builder.setTitle("Cadastro");
-                        //define a mensagem
-                        builder.setMessage("Solicitação de contato enviada com sucesso!");
+//                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//                        //define o titulo
+//                        builder.setTitle("Cadastro");
+//                        //define a mensagem
+//                        builder.setMessage("Solicitação de contato enviada com sucesso!");
+//                        final Intent intent = new Intent(this, TelaContatos.class);
+//                        //define um botão como positivo
+//                        builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface arg0, int arg1) {
+//                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//                                intent.putExtra("CPF", cpf);
+//                                startActivityForResult(intent, 0);
+//                                overridePendingTransition(0,0); //0 for no animation
+//                            }
+//                        });
+//                        //cria o AlertDialog
+//                        alerta = builder.create();
+//                        //Exibe
+//                        alerta.show();
+
                         final Intent intent = new Intent(this, TelaContatos.class);
-                        //define um botão como positivo
-                        builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                                intent.putExtra("CPF", cpf);
-                                startActivityForResult(intent, 0);
-                                overridePendingTransition(0,0); //0 for no animation
-                            }
-                        });
-                        //cria o AlertDialog
-                        alerta = builder.create();
-                        //Exibe
-                        alerta.show();
+                        new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText("Cadastro de Contato")
+                                .setContentText("Enviado com sucesso!")
+                                .setConfirmText("OK")
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        sDialog.dismissWithAnimation();
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                        intent.putExtra("CPF", cpf);
+                                        startActivityForResult(intent, 0);
+                                        overridePendingTransition(0,0); //0 for no animation
+                                    }
+                                })
+                                .show();
+
+
                     }
                     else
                     {
-                        //Cria o gerador do AlertDialog
-                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                        //define o titulo
-                        builder.setTitle("Cadastro");
-                        //define a mensagem
-                        builder.setMessage("Erro para referenciar o usuário!");
-                        //define um botão como positivo
-                        builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                finish();
-                            }
-                        });
-                        //cria o AlertDialog
-                        alerta = builder.create();
-                        //Exibe
-                        alerta.show();
+
+
+//                        //Cria o gerador do AlertDialog
+////                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+////                        //define o titulo
+////                        builder.setTitle("Cadastro");
+////                        //define a mensagem
+////                        builder.setMessage("Erro para referenciar o usuário!");
+////                        //define um botão como positivo
+////                        builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+////                            public void onClick(DialogInterface arg0, int arg1) {
+////                                finish();
+////                            }
+////                        });
+////                        //cria o AlertDialog
+////                        alerta = builder.create();
+////                        //Exibe
+////                        alerta.show();
+
+                        final Intent intent = new Intent(this, TelaContatos.class);
+                        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText("Cadastro de Contato")
+                                .setContentText("Erro para referenciar!")
+                                .setConfirmText("OK")
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        sDialog.dismissWithAnimation();
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                        intent.putExtra("CPF", cpf);
+                                        startActivityForResult(intent, 0);
+                                        overridePendingTransition(0,0); //0 for no animation
+                                    }
+                                })
+                                .show();
 
                     }
                 }

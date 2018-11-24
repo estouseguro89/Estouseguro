@@ -22,6 +22,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 import static com.example.claudiolinhares.estouseguro.database.AppDatabase.getAppDatabase;
 
 public class TelaDados extends AppCompatActivity implements View.OnClickListener{
@@ -144,22 +146,40 @@ public class TelaDados extends AppCompatActivity implements View.OnClickListener
                         db.userDao().updateUsers(userLogin);
 
 
-                        //Cria o gerador do AlertDialog
-                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                        //define o titulo
-                        builder.setTitle("Dados Pessoais");
-                        //define a mensagem
-                        builder.setMessage("Dados atualizados com sucesso!");
-                        //define um botão como positivo
-                        builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                finish();
-                            }
-                        });
-                        //cria o AlertDialog
-                        alerta = builder.create();
-                        //Exibe
-                        alerta.show();
+//                        //Cria o gerador do AlertDialog
+//                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//                        //define o titulo
+//                        builder.setTitle("Dados Pessoais");
+//                        //define a mensagem
+//                        builder.setMessage("Dados atualizados com sucesso!");
+//                        //define um botão como positivo
+//                        builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+//                            public void onClick(DialogInterface arg0, int arg1) {
+//                                finish();
+//                            }
+//                        });
+//                        //cria o AlertDialog
+//                        alerta = builder.create();
+//                        //Exibe
+//                        alerta.show();
+
+                        final Intent intent = new Intent(this, MainActivity.class);
+                        new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                                .setTitleText("Dados Pessoais")
+                                .setContentText("Atualizados com sucesso!")
+                                .setConfirmText("OK")
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        sDialog.dismissWithAnimation();
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                        intent.putExtra("CPF", cpf);
+                                        startActivityForResult(intent, 0);
+                                        overridePendingTransition(0,0); //0 for no animation
+                                    }
+                                })
+                                .show();
+
                     }
                     else
                     {

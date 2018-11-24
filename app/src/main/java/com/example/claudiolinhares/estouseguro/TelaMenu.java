@@ -13,7 +13,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.claudiolinhares.estouseguro.database.AppDatabase;
+import com.example.claudiolinhares.estouseguro.database.Contact;
 import com.example.claudiolinhares.estouseguro.database.User;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class TelaMenu extends AppCompatActivity implements View.OnClickListener{
 
@@ -117,11 +123,31 @@ public class TelaMenu extends AppCompatActivity implements View.OnClickListener{
                 break;
             }
             case R.id.bt_sair: {
-                Intent it = new Intent(this, TelaLogin.class);
-                it.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivityForResult(it, 0);
-                overridePendingTransition(0,0); //0 for no animation
+
+                final Intent it = new Intent(this, TelaLogin.class);
+                new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Sair")
+                        .setContentText("Deseja deslogar do sistema?")
+                        .setCancelText("Não")
+                        .setConfirmText("Sim")
+                        .showCancelButton(true)
+                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.cancel();
+                            }
+                        })
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            public void onClick(SweetAlertDialog sDialog) {
+                                it.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                startActivityForResult(it, 0);
+                                overridePendingTransition(0,0); //0 for no animation
+                            }
+                        })
+                        .show();
+
                 break;
+
             }
         }
 

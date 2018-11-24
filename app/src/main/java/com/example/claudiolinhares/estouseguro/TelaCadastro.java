@@ -3,6 +3,7 @@ package com.example.claudiolinhares.estouseguro;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -32,6 +33,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import static com.example.claudiolinhares.estouseguro.database.AppDatabase.getAppDatabase;
 
@@ -174,22 +177,35 @@ public class TelaCadastro extends AppCompatActivity implements View.OnClickListe
                             db.userDao().insertAll(new_user);
 
 
-                            //Cria o gerador do AlertDialog
-                            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                            //define o titulo
-                            builder.setTitle("Cadastro");
-                            //define a mensagem
-                            builder.setMessage("Cadastro realizado com sucesso!");
-                            //define um botão como positivo
-                            builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface arg0, int arg1) {
-                                    finish();
-                                }
-                            });
-                            //cria o AlertDialog
-                            alerta = builder.create();
-                            //Exibe
-                            alerta.show();
+//                            //Cria o gerador do AlertDialog
+//                            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//                            //define o titulo
+//                            builder.setTitle("Cadastro");
+//                            //define a mensagem
+//                            builder.setMessage("Cadastro realizado com sucesso!");
+//                            //define um botão como positivo
+//                            builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface arg0, int arg1) {
+//                                    finish();
+//                                }
+//                            });
+//                            //cria o AlertDialog
+//                            alerta = builder.create();
+//                            //Exibe
+//                            alerta.show();
+
+                            new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                                    .setTitleText("Cadastro")
+                                    .setContentText("Cadastrado com sucesso!")
+                                    .setConfirmText("OK")
+                                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                        @Override
+                                        public void onClick(SweetAlertDialog sDialog) {
+                                            sDialog.dismissWithAnimation();
+                                            finish();
+                                        }
+                                    })
+                                    .show();
                         }
                         else
                         {

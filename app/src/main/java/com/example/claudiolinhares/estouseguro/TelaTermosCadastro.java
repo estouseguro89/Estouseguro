@@ -22,7 +22,6 @@ public class TelaTermosCadastro extends AppCompatActivity implements View.OnClic
     Button fechar_menu;
     AppDatabase db;
     String cpf;
-    private AlertDialog alerta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

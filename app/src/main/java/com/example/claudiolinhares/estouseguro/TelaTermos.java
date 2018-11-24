@@ -22,7 +22,6 @@ public class TelaTermos extends AppCompatActivity implements View.OnClickListene
     Button menu_button,fechar_menu;
     AppDatabase db;
     String cpf;
-    private AlertDialog alerta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

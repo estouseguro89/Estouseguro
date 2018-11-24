@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 import static com.example.claudiolinhares.estouseguro.database.AppDatabase.getAppDatabase;
 
 public class TelaContatos extends AppCompatActivity implements View.OnClickListener{
@@ -198,39 +200,78 @@ public class TelaContatos extends AppCompatActivity implements View.OnClickListe
             {
                 if(contatoEnviado.getId() == v.getId())
                 {
-                    //Cria o gerador do AlertDialog
-                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                    //define o titulo
-                    builder.setTitle("Contato");
-                    //define a mensagem
-                    builder.setMessage("Deseja excluir o contato selecionado?");
+//                    //Cria o gerador do AlertDialog
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//                    //define o titulo
+//                    builder.setTitle("Contato");
+//                    //define a mensagem
+//                    builder.setMessage("Deseja excluir o contato selecionado?");
+//                    final Intent intent = new Intent(this, TelaContatos.class);
+//                    //define um botão como positivo
+//                    builder.setNeutralButton("Yes", new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface arg0, int arg1) {
+//
+//                            List<Contact> updatedContacts = new ArrayList<>();
+//                            updatedContacts.addAll(contatosEnviados);
+//                            updatedContacts.remove(contatoEnviado);
+//
+//                            User userLogin = db.userDao().findAlreadyExist(cpf);
+//                            if (userLogin != null) {
+//                                //ATUALIZA OS CONTATOS
+//                                userLogin.setAllContacts(updatedContacts);
+//                            }
+//
+//                            db.userDao().updateUsers(userLogin);
+//
+//                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//                            intent.putExtra("CPF", cpf);
+//                            startActivityForResult(intent, 0);
+//                            overridePendingTransition(0,0); //0 for no animation
+//                        }
+//                    });
+//                    //cria o AlertDialog
+//                    alerta = builder.create();
+//                    //Exibe
+//                    alerta.show();
+
                     final Intent intent = new Intent(this, TelaContatos.class);
-                    //define um botão como positivo
-                    builder.setNeutralButton("Yes", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface arg0, int arg1) {
+                    new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("Configurações")
+                            .setContentText("Excluir o contato?")
+                            .setCancelText("Não")
+                            .setConfirmText("Sim")
+                            .showCancelButton(true)
+                            .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    sDialog.cancel();
+                                }
+                            })
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                public void onClick(SweetAlertDialog sDialog) {
 
-                            List<Contact> updatedContacts = new ArrayList<>();
-                            updatedContacts.addAll(contatosEnviados);
-                            updatedContacts.remove(contatoEnviado);
+                                    List<Contact> updatedContacts = new ArrayList<>();
+                                    updatedContacts.addAll(contatosEnviados);
+                                    updatedContacts.remove(contatoEnviado);
 
-                            User userLogin = db.userDao().findAlreadyExist(cpf);
-                            if (userLogin != null) {
-                                //ATUALIZA OS CONTATOS
-                                userLogin.setAllContacts(updatedContacts);
-                            }
+                                    User userLogin = db.userDao().findAlreadyExist(cpf);
+                                    if (userLogin != null) {
+                                        //ATUALIZA OS CONTATOS
+                                        userLogin.setAllContacts(updatedContacts);
+                                    }
 
-                            db.userDao().updateUsers(userLogin);
+                                    db.userDao().updateUsers(userLogin);
 
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                            intent.putExtra("CPF", cpf);
-                            startActivityForResult(intent, 0);
-                            overridePendingTransition(0,0); //0 for no animation
-                        }
-                    });
-                    //cria o AlertDialog
-                    alerta = builder.create();
-                    //Exibe
-                    alerta.show();
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                    intent.putExtra("CPF", cpf);
+                                    startActivityForResult(intent, 0);
+                                    overridePendingTransition(0,0); //0 for no animation
+
+                                }
+                            })
+                            .show();
+
+
                     break;
                 }
             }

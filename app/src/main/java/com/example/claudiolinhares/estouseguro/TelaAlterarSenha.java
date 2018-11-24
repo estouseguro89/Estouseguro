@@ -21,6 +21,8 @@ import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 import static com.example.claudiolinhares.estouseguro.database.AppDatabase.getAppDatabase;
 
 public class TelaAlterarSenha extends AppCompatActivity implements View.OnClickListener{
@@ -103,26 +105,43 @@ public class TelaAlterarSenha extends AppCompatActivity implements View.OnClickL
                             userTrocaSenha.setPassword(TelaCadastro.md5(novasenha));
                             db.userDao().updateUsers(userTrocaSenha);
 
-                            //Cria o gerador do AlertDialog
-                            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                            //define o titulo
-                            builder.setTitle("Senha");
-                            //define a mensagem
-                            builder.setMessage("Senha alterada com sucesso!");
-                            intentfecha = new Intent(this, MainActivity.class);
-                            intentfecha.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                            //define um botão como positivo
-                            builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface arg0, int arg1) {
+//                            //Cria o gerador do AlertDialog
+//                            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//                            //define o titulo
+//                            builder.setTitle("Senha");
+//                            //define a mensagem
+//                            builder.setMessage("Senha alterada com sucesso!");
+//                            intentfecha = new Intent(this, MainActivity.class);
+//                            intentfecha.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//                            //define um botão como positivo
+//                            builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface arg0, int arg1) {
+//
+//                                    startActivityForResult(intentfecha, 0);
+//                                    overridePendingTransition(0,0); //0 for no animation
+//                                }
+//                            });
+//                            //cria o AlertDialog
+//                            alerta = builder.create();
+//                            //Exibe
+//                            alerta.show();
 
-                                    startActivityForResult(intentfecha, 0);
-                                    overridePendingTransition(0,0); //0 for no animation
-                                }
-                            });
-                            //cria o AlertDialog
-                            alerta = builder.create();
-                            //Exibe
-                            alerta.show();
+                            final Intent intent = new Intent(this, MainActivity.class);
+                            new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                                    .setTitleText("Senha")
+                                    .setContentText("Alterada com sucesso!")
+                                    .setConfirmText("OK")
+                                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                        @Override
+                                        public void onClick(SweetAlertDialog sDialog) {
+                                            sDialog.dismissWithAnimation();
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                            intent.putExtra("CPF", cpf);
+                                            startActivityForResult(intent, 0);
+                                            overridePendingTransition(0,0); //0 for no animation
+                                        }
+                                    })
+                                    .show();
 
                         }
                         else

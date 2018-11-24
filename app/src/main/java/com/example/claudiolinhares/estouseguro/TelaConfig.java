@@ -16,6 +16,8 @@ import android.widget.TextView;
 import com.example.claudiolinhares.estouseguro.database.AppDatabase;
 import com.example.claudiolinhares.estouseguro.database.User;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 import static com.example.claudiolinhares.estouseguro.database.AppDatabase.getAppDatabase;
 
 public class TelaConfig extends AppCompatActivity implements View.OnClickListener{
@@ -110,27 +112,44 @@ public class TelaConfig extends AppCompatActivity implements View.OnClickListene
 
                 db.userDao().updateUsers(user);
 
-                //Cria o gerador do AlertDialog
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                //define o titulo
-                builder.setTitle("Configurações");
-                //define a mensagem
-                builder.setMessage("Configurações salvas com sucesso!");
-                intentfecha = new Intent(this, MainActivity.class);
-                intentfecha.putExtra("CPF", cpf);
-                intentfecha.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                //define um botão como positivo
-                builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface arg0, int arg1) {
+//                //Cria o gerador do AlertDialog
+//                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//                //define o titulo
+//                builder.setTitle("Configurações");
+//                //define a mensagem
+//                builder.setMessage("Configurações salvas com sucesso!");
+//                intentfecha = new Intent(this, MainActivity.class);
+//                intentfecha.putExtra("CPF", cpf);
+//                intentfecha.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//                //define um botão como positivo
+//                builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface arg0, int arg1) {
+//
+//                        startActivityForResult(intentfecha, 0);
+//                        overridePendingTransition(0,0); //0 for no animation
+//                    }
+//                });
+//                //cria o AlertDialog
+//                alerta = builder.create();
+//                //Exibe
+//                alerta.show();
 
-                        startActivityForResult(intentfecha, 0);
-                        overridePendingTransition(0,0); //0 for no animation
-                    }
-                });
-                //cria o AlertDialog
-                alerta = builder.create();
-                //Exibe
-                alerta.show();
+                final Intent intent = new Intent(this, MainActivity.class);
+                new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText("Configurações")
+                        .setContentText("Salvas com sucesso!")
+                        .setConfirmText("OK")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.dismissWithAnimation();
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                intent.putExtra("CPF", cpf);
+                                startActivityForResult(intent, 0);
+                                overridePendingTransition(0,0); //0 for no animation
+                            }
+                        })
+                        .show();
 
                 break;
 
