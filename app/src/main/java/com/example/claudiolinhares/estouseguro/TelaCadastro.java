@@ -172,8 +172,10 @@ public class TelaCadastro extends AppCompatActivity implements View.OnClickListe
                     else{
                         User userLogin = db.userDao().findAlreadyExist(cpf);
                         if (userLogin == null) {
-                            List<Contact> contatos = new ArrayList();
-                            User new_user = new User(cpf, md5(password), nome, lastName, email, telefone, contatos);
+                            List<User> contatos = new ArrayList();
+                            List<Contact> send = new ArrayList();
+                            List<Contact> received = new ArrayList();
+                            User new_user = new User(cpf, md5(password), nome, lastName, email, telefone, contatos, send, received);
                             db.userDao().insertAll(new_user);
 
 

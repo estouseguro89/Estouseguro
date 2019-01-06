@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -30,7 +31,7 @@ import static com.example.claudiolinhares.estouseguro.database.AppDatabase.getAp
 
 public class TelaContatos extends AppCompatActivity implements View.OnClickListener{
 
-    TextView text_contatos,text_convitesenivados;
+    TextView text_contatos;
     Button ic_reject_contact_send,menu_button,contatos;
     LinearLayout layout_raiz1;
     RelativeLayout contato_enivado;
@@ -40,6 +41,7 @@ public class TelaContatos extends AppCompatActivity implements View.OnClickListe
     private AlertDialog alerta;
     int buttonID;
     List<Contact> contatosEnviados;
+    List<Contact> contatosRecebidos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +55,6 @@ public class TelaContatos extends AppCompatActivity implements View.OnClickListe
         cpf = it.getStringExtra("CPF");
 
         text_contatos = (TextView) findViewById(R.id.text_contatos);
-        text_convitesenivados = (TextView) findViewById(R.id.text_convitesenivados);
 
         layout_raiz1 = (LinearLayout) findViewById(R.id.layout_raiz1);
         /*
@@ -79,94 +80,252 @@ public class TelaContatos extends AppCompatActivity implements View.OnClickListe
         db = getAppDatabase(this);
         User userLogin = db.userDao().findAlreadyExist(cpf);
         if (userLogin != null) {
-            //PEGA OS CONTATOS EXISTENTES E INCREMENTA O NOVO
-            contatosEnviados =  userLogin.getContacts();
-            for(Contact contatoEnviado : contatosEnviados)
+            //PEGA OS CONTATOS RECEBIDOS E ADICIONA DINAMICAMENTE
+            contatosRecebidos =  userLogin.getReceivedcontact();
+            if(contatosRecebidos.size() == 0)
             {
-
-                //Verifica os contatos enviados
-                RelativeLayout relativeLayout = new RelativeLayout(this);
-                RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.MATCH_PARENT,
-                        RelativeLayout.LayoutParams.MATCH_PARENT);
-                relativeLayout.setLayoutParams(rlp);
-
-                LinearLayout linear = new LinearLayout(this);
-                LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.WRAP_CONTENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT);
-
-                linear.setOrientation(LinearLayout.VERTICAL);
-                linear.setLayoutParams(llp);
-
-
                 TextView tv = new TextView(this);
-                tv.setText(contatoEnviado.getName());
+                tv.setText("Nenhum convite recebido.");
                 tv.setTextColor(Color.parseColor("#C1CBCA"));
                 tv.setTextSize(TypedValue.COMPLEX_UNIT_SP,15);
 
-                // Defining the layout parameters of the TextView
-                RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.WRAP_CONTENT,
-                        RelativeLayout.LayoutParams.WRAP_CONTENT);
-                lp.addRule(RelativeLayout.CENTER_IN_PARENT);
-
-                // Setting the parameters on the TextView
-                tv.setLayoutParams(lp);
-
-                linear.addView(tv);
-
-                TextView tvTelefone = new TextView(this);
-                tvTelefone.setText(contatoEnviado.getTelefone());
-                tvTelefone.setTextColor(Color.parseColor("#C1CBCA"));
-                tvTelefone.setTextSize(TypedValue.COMPLEX_UNIT_SP,15);
-
-                // Defining the layout parameters of the TextView
-                RelativeLayout.LayoutParams lpTelefone = new RelativeLayout.LayoutParams(
-                        RelativeLayout.LayoutParams.WRAP_CONTENT,
-                        RelativeLayout.LayoutParams.WRAP_CONTENT);
-                lpTelefone.addRule(RelativeLayout.CENTER_IN_PARENT);
-
-                // Setting the parameters on the TextView
-                tvTelefone.setLayoutParams(lpTelefone);
-
-                linear.addView(tvTelefone);
-
-
-                Button button = new Button(this);
-                RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
-                        RelativeLayout.LayoutParams.WRAP_CONTENT);
-                params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-                button.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.ic_reject_contact));
-                button.setLayoutParams(params);
-                button.setId(contatoEnviado.getId());
-
-                int dimensionInDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 30, getResources().getDisplayMetrics());
-                button.getLayoutParams().height = dimensionInDp;
-                dimensionInDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 35, getResources().getDisplayMetrics());
-                button.getLayoutParams().width = dimensionInDp;
-                button.requestLayout();
-
-                button.setOnClickListener(this);
-
-
-                // Adding the TextView to the RelativeLayout as a child
-                relativeLayout.addView(linear);
-                relativeLayout.addView(button);
-
-                layout_raiz1.addView(relativeLayout);
+                layout_raiz1.addView(tv);
 
                 ImageView line_convites = new ImageView(this);
-                dimensionInDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics());
+                int dimensionInDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics());
                 RelativeLayout.LayoutParams line_params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, dimensionInDp);
                 line_params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
                 line_convites.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.line_dark));
                 line_convites.setLayoutParams(line_params);
 
                 layout_raiz1.addView(line_convites);
-
-
             }
+            else
+            {
+                for(Contact contatoRecebido : contatosRecebidos)
+                {
+                    //Verifica os contatos enviados
+                    RelativeLayout relativeLayout = new RelativeLayout(this);
+                    RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(
+                            RelativeLayout.LayoutParams.MATCH_PARENT,
+                            RelativeLayout.LayoutParams.MATCH_PARENT);
+                    relativeLayout.setLayoutParams(rlp);
+
+                    Button button = new Button(this);
+                    RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+                            RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+                    button.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.ic_reject_contact));
+                    button.setLayoutParams(params);
+                    button.setId(contatoRecebido.getId());
+
+                    int dimensionInDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 30, getResources().getDisplayMetrics());
+                    button.getLayoutParams().height = dimensionInDp;
+                    dimensionInDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 35, getResources().getDisplayMetrics());
+                    button.getLayoutParams().width = dimensionInDp;
+                    button.requestLayout();
+
+                    relativeLayout.addView(button);
+
+                    LinearLayout linear = new LinearLayout(this);
+                    RelativeLayout.LayoutParams llp = new RelativeLayout.LayoutParams(
+                            LinearLayout.LayoutParams.WRAP_CONTENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT);
+                    llp.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
+                    //llp.gravity= Gravity.CENTER_VERTICAL;
+                    linear.setGravity(Gravity.CENTER);
+                    linear.setOrientation(LinearLayout.VERTICAL);
+                    linear.setLayoutParams(llp);
+
+
+                    TextView tv = new TextView(this);
+                    tv.setText(contatoRecebido.getName());
+                    tv.setTextColor(Color.parseColor("#C1CBCA"));
+                    tv.setTextSize(TypedValue.COMPLEX_UNIT_SP,15);
+
+                    // Defining the layout parameters of the TextView
+                    RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+                            RelativeLayout.LayoutParams.WRAP_CONTENT,
+                            RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    lp.addRule(RelativeLayout.CENTER_IN_PARENT);
+
+                    // Setting the parameters on the TextView
+                    tv.setLayoutParams(lp);
+
+                    linear.addView(tv);
+
+                    TextView tvTelefone = new TextView(this);
+                    tvTelefone.setText(contatoRecebido.getTelefone());
+                    tvTelefone.setTextColor(Color.parseColor("#C1CBCA"));
+                    tvTelefone.setTextSize(TypedValue.COMPLEX_UNIT_SP,15);
+
+                    // Defining the layout parameters of the TextView
+                    RelativeLayout.LayoutParams lpTelefone = new RelativeLayout.LayoutParams(
+                            RelativeLayout.LayoutParams.WRAP_CONTENT,
+                            RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    lpTelefone.addRule(RelativeLayout.CENTER_IN_PARENT);
+
+                    // Setting the parameters on the TextView
+                    tvTelefone.setLayoutParams(lpTelefone);
+
+                    linear.addView(tvTelefone);
+
+
+                    Button button2 = new Button(this);
+                    RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+                            RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    params2.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+                    button2.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.ic_accept_contact));
+                    button2.setLayoutParams(params2);
+                    button2.setId(contatoRecebido.getId());
+
+                    dimensionInDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 30, getResources().getDisplayMetrics());
+                    button2.getLayoutParams().height = dimensionInDp;
+                    dimensionInDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 35, getResources().getDisplayMetrics());
+                    button2.getLayoutParams().width = dimensionInDp;
+                    button2.requestLayout();
+
+                    button2.setOnClickListener(this);
+
+
+                    // Adding the TextView to the RelativeLayout as a child
+                    relativeLayout.addView(linear);
+                    relativeLayout.addView(button2);
+
+                    layout_raiz1.addView(relativeLayout);
+
+                    ImageView line_convites = new ImageView(this);
+                    dimensionInDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics());
+                    RelativeLayout.LayoutParams line_params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, dimensionInDp);
+                    line_params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+                    line_convites.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.line_dark));
+                    line_convites.setLayoutParams(line_params);
+
+                    layout_raiz1.addView(line_convites);
+
+
+                }
+            }
+
+            //ADICIONA DINAMICAMENTE O TEXTO CONVITES ENVIADOS E A BARRA PRETA
+
+            TextView tv_convitesenviados = new TextView(this);
+            tv_convitesenviados.setText("Convites Enviados");
+            tv_convitesenviados.setTextColor(Color.parseColor("#01C7CA"));
+            tv_convitesenviados.setTextSize(TypedValue.COMPLEX_UNIT_SP,17);
+
+            layout_raiz1.addView(tv_convitesenviados);
+
+
+            //PEGA OS CONTATOS ENVIADOS E ADICIONA DINAMICAMENTE
+            contatosEnviados =  userLogin.getSendcontact();
+            if(contatosEnviados.size() == 0)
+            {
+                TextView tv = new TextView(this);
+                tv.setText("Nenhum convite enviado.");
+                tv.setTextColor(Color.parseColor("#C1CBCA"));
+                tv.setTextSize(TypedValue.COMPLEX_UNIT_SP,15);
+
+                layout_raiz1.addView(tv);
+
+                ImageView line_convites = new ImageView(this);
+                int dimensionInDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics());
+                RelativeLayout.LayoutParams line_params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, dimensionInDp);
+                line_params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+                line_convites.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.line_dark));
+                line_convites.setLayoutParams(line_params);
+
+                layout_raiz1.addView(line_convites);
+            }
+            else
+            {
+                for(Contact contatoEnviado : contatosEnviados)
+                {
+                    //Verifica os contatos enviados
+                    RelativeLayout relativeLayout = new RelativeLayout(this);
+                    RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(
+                            RelativeLayout.LayoutParams.MATCH_PARENT,
+                            RelativeLayout.LayoutParams.MATCH_PARENT);
+                    relativeLayout.setLayoutParams(rlp);
+
+                    LinearLayout linear = new LinearLayout(this);
+                    LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.WRAP_CONTENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT);
+
+                    linear.setOrientation(LinearLayout.VERTICAL);
+                    linear.setLayoutParams(llp);
+
+
+                    TextView tv = new TextView(this);
+                    tv.setText(contatoEnviado.getName());
+                    tv.setTextColor(Color.parseColor("#C1CBCA"));
+                    tv.setTextSize(TypedValue.COMPLEX_UNIT_SP,15);
+
+                    // Defining the layout parameters of the TextView
+                    RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
+                            RelativeLayout.LayoutParams.WRAP_CONTENT,
+                            RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    lp.addRule(RelativeLayout.CENTER_IN_PARENT);
+
+                    // Setting the parameters on the TextView
+                    tv.setLayoutParams(lp);
+
+                    linear.addView(tv);
+
+                    TextView tvTelefone = new TextView(this);
+                    tvTelefone.setText(contatoEnviado.getTelefone());
+                    tvTelefone.setTextColor(Color.parseColor("#C1CBCA"));
+                    tvTelefone.setTextSize(TypedValue.COMPLEX_UNIT_SP,15);
+
+                    // Defining the layout parameters of the TextView
+                    RelativeLayout.LayoutParams lpTelefone = new RelativeLayout.LayoutParams(
+                            RelativeLayout.LayoutParams.WRAP_CONTENT,
+                            RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    lpTelefone.addRule(RelativeLayout.CENTER_IN_PARENT);
+
+                    // Setting the parameters on the TextView
+                    tvTelefone.setLayoutParams(lpTelefone);
+
+                    linear.addView(tvTelefone);
+
+
+                    Button button = new Button(this);
+                    RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+                            RelativeLayout.LayoutParams.WRAP_CONTENT);
+                    params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+                    button.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.ic_reject_contact));
+                    button.setLayoutParams(params);
+                    button.setId(contatoEnviado.getId());
+
+                    int dimensionInDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 30, getResources().getDisplayMetrics());
+                    button.getLayoutParams().height = dimensionInDp;
+                    dimensionInDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 35, getResources().getDisplayMetrics());
+                    button.getLayoutParams().width = dimensionInDp;
+                    button.requestLayout();
+
+                    button.setOnClickListener(this);
+
+
+                    // Adding the TextView to the RelativeLayout as a child
+                    relativeLayout.addView(linear);
+                    relativeLayout.addView(button);
+
+                    layout_raiz1.addView(relativeLayout);
+
+                    ImageView line_convites = new ImageView(this);
+                    dimensionInDp = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 2, getResources().getDisplayMetrics());
+                    RelativeLayout.LayoutParams line_params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, dimensionInDp);
+                    line_params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+                    line_convites.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.line_dark));
+                    line_convites.setLayoutParams(line_params);
+
+                    layout_raiz1.addView(line_convites);
+
+
+                }
+            }
+
         }
     }
 
@@ -236,8 +395,8 @@ public class TelaContatos extends AppCompatActivity implements View.OnClickListe
 
                     final Intent intent = new Intent(this, TelaContatos.class);
                     new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-                            .setTitleText("Configurações")
-                            .setContentText("Excluir o contato?")
+                            .setTitleText("Contato")
+                            .setContentText("Cancelar o envio?")
                             .setCancelText("Não")
                             .setConfirmText("Sim")
                             .showCancelButton(true)
@@ -256,8 +415,8 @@ public class TelaContatos extends AppCompatActivity implements View.OnClickListe
 
                                     User userLogin = db.userDao().findAlreadyExist(cpf);
                                     if (userLogin != null) {
-                                        //ATUALIZA OS CONTATOS
-                                        userLogin.setAllContacts(updatedContacts);
+                                        //ATUALIZA OS CONTATOS ENVIADOS
+                                        userLogin.setSendcontact(updatedContacts);
                                     }
 
                                     db.userDao().updateUsers(userLogin);

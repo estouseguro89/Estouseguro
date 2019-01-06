@@ -32,9 +32,18 @@ public class User{
     //@ColumnInfo(name = "contacts")
     //@Relation(parentColumn = "id", entityColumn = "id", entity = Contact.class, projection = {"name"})
     @TypeConverters(GithubTypeConverters.class)
-    private List<Contact> contacts;
+    private List<Contact> sendcontact;
+    @TypeConverters(GithubTypeConverters.class)
+    private List<Contact> receivedcontact;
+    @TypeConverters(GithubUserConverters.class)
+    private List<User> contacts;
 
-    public User(String cpf, String password,String name,String lastname,String email, String telefone, List<Contact> contacts)
+    public User()
+    {
+
+    }
+
+    public User(String cpf, String password,String name,String lastname,String email, String telefone, List<User> contacts, List<Contact> send, List<Contact> received)
     {
         this.cpf = cpf;
         this.password = password;
@@ -42,10 +51,12 @@ public class User{
         this.setLastname(lastname);
         this.setEmail(email);
         this.setTelefone(telefone);
-        this.contacts = contacts;
+        this.setContacts(contacts);
         this.setConfigsms(false);
         this.setConfiglocation(false);
         this.setConfigemail(false);
+        this.setSendcontact(send);
+        this.setReceivedcontact(received);
     }
 
     public int getId() {
@@ -104,16 +115,8 @@ public class User{
         this.telefone = telefone;
     }
 
-    public List<Contact> getContacts() {
-        return contacts;
-    }
-
-    public void setContacts(Contact contact) {
-        this.contacts.add(contact);
-    }
-
-    public void setAllContacts(List<Contact> contacts) {
-        this.contacts = contacts;
+    public void setAllContacts(List<User> contacts) {
+        this.setContacts(contacts);
     }
 
     public boolean isConfigsms() {
@@ -132,11 +135,43 @@ public class User{
         this.configlocation = configlocation;
     }
 
-    public boolean isConfigemail() {
-        return configemail;
+    public boolean isConfigemail() { return configemail; }
+
+    public void setConfigemail(boolean configemail) { this.configemail = configemail; }
+
+    public List<Contact> getSendcontact() {
+        return sendcontact;
     }
 
-    public void setConfigemail(boolean configemail) {
-        this.configemail = configemail;
+    public void setSendcontact(List<Contact> sendcontact) {
+        this.sendcontact = sendcontact;
+    }
+
+    public List<Contact> getReceivedcontact() {
+        return receivedcontact;
+    }
+
+    public void setReceivedcontact(List<Contact> receivedcontact) {
+        this.receivedcontact = receivedcontact;
+    }
+
+    public List<User> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(List<User> contacts) {
+        this.contacts = contacts;
+    }
+
+    public void setOneReceivedcontact(Contact receivedcontact) {
+        this.receivedcontact.add(receivedcontact);
+    }
+
+    public void setOneSendcontact(Contact sendcontact) {
+        this.sendcontact.add(sendcontact);
+    }
+
+    public void setOneContact(User contact) {
+        this.contacts.add(contact);
     }
 }

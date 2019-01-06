@@ -18,6 +18,8 @@ import com.example.claudiolinhares.estouseguro.database.User;
 import com.github.rtoshiro.util.format.SimpleMaskFormatter;
 import com.github.rtoshiro.util.format.text.MaskTextWatcher;
 
+import java.util.List;
+
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import static com.example.claudiolinhares.estouseguro.database.AppDatabase.getAppDatabase;
@@ -30,7 +32,6 @@ public class TelaAdicionarContato extends AppCompatActivity implements View.OnCl
     TextInputLayout repetirtelefoneinputlayout,telefoneinputlayout,nomeinputlayout;
     AppDatabase db;
     String cpf;
-    private AlertDialog alerta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +78,6 @@ public class TelaAdicionarContato extends AppCompatActivity implements View.OnCl
         db = getAppDatabase(this);
     }
 
-    Intent intentfecha;
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -109,29 +109,27 @@ public class TelaAdicionarContato extends AppCompatActivity implements View.OnCl
 
                     if (userLogin != null) {
                         //PEGA OS CONTATOS EXISTENTES E INCREMENTA O NOVO
-                        userLogin.setContacts(contact);
+                        userLogin.setOneSendcontact(contact);
                         db.userDao().updateUsers(userLogin);
 
-                        //Cria o gerador do AlertDialog
-//                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//                        //define o titulo
-//                        builder.setTitle("Cadastro");
-//                        //define a mensagem
-//                        builder.setMessage("Solicitação de contato enviada com sucesso!");
-//                        final Intent intent = new Intent(this, TelaContatos.class);
-//                        //define um botão como positivo
-//                        builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-//                            public void onClick(DialogInterface arg0, int arg1) {
-//                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-//                                intent.putExtra("CPF", cpf);
-//                                startActivityForResult(intent, 0);
-//                                overridePendingTransition(0,0); //0 for no animation
-//                            }
-//                        });
-//                        //cria o AlertDialog
-//                        alerta = builder.create();
-//                        //Exibe
-//                        alerta.show();
+                        //ENVIAR PARA O CONTATO DO TELEFONE (SE EXISTIR) A SOLICITAÇÃO
+                        List<User> listUser = db.userDao().getAll();
+                        User userReceived = null;
+                        for(User u : listUser)
+                        {
+                            if( u.getTelefone().equals(telefone))
+                            {
+                                userReceived = u;
+                                break;
+                            }
+                        }
+                        if(userReceived != null)
+                        {
+                            Contact contactLogged = new Contact(userLogin.getId(),userLogin.getName(),userLogin.getTelefone());
+                            userReceived.setOneReceivedcontact(contactLogged);
+
+                            db.userDao().updateUsers(userReceived);
+                        }
 
                         final Intent intent = new Intent(this, TelaContatos.class);
                         new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
@@ -154,24 +152,6 @@ public class TelaAdicionarContato extends AppCompatActivity implements View.OnCl
                     }
                     else
                     {
-
-
-//                        //Cria o gerador do AlertDialog
-////                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-////                        //define o titulo
-////                        builder.setTitle("Cadastro");
-////                        //define a mensagem
-////                        builder.setMessage("Erro para referenciar o usuário!");
-////                        //define um botão como positivo
-////                        builder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-////                            public void onClick(DialogInterface arg0, int arg1) {
-////                                finish();
-////                            }
-////                        });
-////                        //cria o AlertDialog
-////                        alerta = builder.create();
-////                        //Exibe
-////                        alerta.show();
 
                         final Intent intent = new Intent(this, TelaContatos.class);
                         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)

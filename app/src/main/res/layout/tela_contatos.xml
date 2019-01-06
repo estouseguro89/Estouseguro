@@ -290,42 +290,41 @@
             <RelativeLayout
                 android:id="@+id/contato_recebido1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:divider="@drawable/empty_tall_divider_pequeno"
-                android:showDividers="middle">
+                android:layout_height="match_parent">
 
-                <Button
-                    android:id="@+id/ic_reject_contact"
-                    android:layout_width="35dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:background="@drawable/ic_reject_contact" />
+                
+            <Button
+                android:id="@+id/ic_reject_contact"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/ic_reject_contact" />
 
-                <LinearLayout
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/nome_contato4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:gravity="center_vertical|center"
-                    android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/nome_contato4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    android:text="Maria Tales"
+                    android:textColor="#C1CBCA"
+                    android:textSize="15dp" />
 
-                        android:text="Maria Tales"
-                        android:textColor="#C1CBCA"
-                        android:textSize="15dp" />
+                <TextView
+                    android:id="@+id/telefone_contato4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(34) 9 9888-9998"
+                    android:textColor="#C1CBCA"
+                    android:textSize="15dp" />
 
-                    <TextView
-                        android:id="@+id/telefone_contato4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="(34) 9 9888-9998"
-                        android:textColor="#C1CBCA"
-                        android:textSize="15dp" />
-
-                </LinearLayout>
+            </LinearLayout>
 
                 <Button
                     android:id="@+id/ic_accept_contact"
@@ -334,65 +333,133 @@
                     android:layout_alignParentRight="true"
                     android:background="@drawable/ic_accept_contact" />
 
-            </RelativeLayout>
-
-            <ImageView
-                android:id="@+id/line_convites_recebidos1"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="@drawable/line_dark"/>
-
-            <RelativeLayout
-                android:id="@+id/contato_recebido2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:divider="@drawable/empty_tall_divider_pequeno"
-                android:showDividers="middle">
-
-                <Button
-                    android:id="@+id/ic_reject_contact2"
-                    android:layout_width="35dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentLeft="true"
-                    android:background="@drawable/ic_reject_contact" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:gravity="center_vertical|center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/nome_contato5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:text="Giovana Costa"
-                        android:textColor="#C1CBCA"
-                        android:textSize="15dp" />
-
-                    <TextView
-                        android:id="@+id/telefone_contato5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="(34) 9 9888-9978"
-                        android:textColor="#C1CBCA"
-                        android:textSize="15dp" />
-
-                </LinearLayout>
-
-                <Button
-                    android:id="@+id/ic_accept_contact2"
-                    android:layout_width="35dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/ic_accept_contact" />
 
             </RelativeLayout>
 
+            <!-- <TextView
+                 android:id="@+id/recebidos_vazio"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="Nenhum convite recebido."
+                 android:textColor="#C1CBCA"
+                 android:textSize="15dp" />
+
+
+             <RelativeLayout
+                 android:id="@+id/contato_recebido1"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:divider="@drawable/empty_tall_divider_pequeno"
+                 android:showDividers="middle">
+
+                 <Button
+                     android:id="@+id/ic_reject_contact"
+                     android:layout_width="35dp"
+                     android:layout_height="30dp"
+                     android:layout_alignParentLeft="true"
+                     android:background="@drawable/ic_reject_contact" />
+
+                 <LinearLayout
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_centerInParent="true"
+                     android:gravity="center_vertical|center"
+                     android:orientation="vertical">
+
+                     <TextView
+                         android:id="@+id/nome_contato4"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+
+                         android:text="Maria Tales"
+                         android:textColor="#C1CBCA"
+                         android:textSize="15dp" />
+
+                     <TextView
+                         android:id="@+id/telefone_contato4"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="(34) 9 9888-9998"
+                         android:textColor="#C1CBCA"
+                         android:textSize="15dp" />
+
+                 </LinearLayout>
+
+                 <Button
+                     android:id="@+id/ic_accept_contact"
+                     android:layout_width="35dp"
+                     android:layout_height="30dp"
+                     android:layout_alignParentRight="true"
+                     android:background="@drawable/ic_accept_contact" />
+
+             </RelativeLayout>
+
+             <ImageView
+                 android:id="@+id/line_convites_recebidos1"
+                 android:layout_width="match_parent"
+                 android:layout_height="2dp"
+                 android:background="@drawable/line_dark"/>
+
+             <RelativeLayout
+                 android:id="@+id/contato_recebido2"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:divider="@drawable/empty_tall_divider_pequeno"
+                 android:showDividers="middle">
+
+                 <Button
+                     android:id="@+id/ic_reject_contact2"
+                     android:layout_width="35dp"
+                     android:layout_height="30dp"
+                     android:layout_alignParentLeft="true"
+                     android:background="@drawable/ic_reject_contact" />
+
+                 <LinearLayout
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_centerInParent="true"
+                     android:gravity="center_vertical|center"
+                     android:orientation="vertical">
+
+                     <TextView
+                         android:id="@+id/nome_contato5"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+
+                         android:text="Giovana Costa"
+                         android:textColor="#C1CBCA"
+                         android:textSize="15dp" />
+
+                     <TextView
+                         android:id="@+id/telefone_contato5"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="(34) 9 9888-9978"
+                         android:textColor="#C1CBCA"
+                         android:textSize="15dp" />
+
+                 </LinearLayout>
+
+                 <Button
+                     android:id="@+id/ic_accept_contact2"
+                     android:layout_width="35dp"
+                     android:layout_height="30dp"
+                     android:layout_alignParentRight="true"
+                     android:background="@drawable/ic_accept_contact" />
+
+             </RelativeLayout>
+
+             <ImageView
+                 android:id="@+id/line_convites_recebidos2"
+                 android:layout_width="match_parent"
+                 android:layout_height="2dp"
+                 android:background="@drawable/line_dark"/>
+
+             -->
+
+            <!--
             <ImageView
-                android:id="@+id/line_convites_recebidos2"
+                android:id="@+id/line_contato4"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="@drawable/line_dark"/>
@@ -404,6 +471,8 @@
                 android:text="Convites Enviados"
                 android:textColor="#01C7CA"
                 android:textSize="17dp" />
+
+                -->
 
             <!--<RelativeLayout
                 android:id="@+id/contato_enivado"
